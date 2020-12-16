@@ -1,10 +1,10 @@
 package com.yjh.movie.po;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 
@@ -12,8 +12,13 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Slf4j
 public class User {
+
+    @TableId
     private int uid;
+
     private String uname;
     private String uemail;
     private String upassword;
