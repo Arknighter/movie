@@ -11,6 +11,7 @@ spring:
     suffix: .ftl # 模版文件后缀名
     charset: UTF-8 # 文件编码
     template-loader-path: classpath:/templates/
+    request-context-attribute: request  #spring.freemarker.request-context-attribute=request   在x.ftl文件中进行使用： ${request.contextPath}
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql日志
