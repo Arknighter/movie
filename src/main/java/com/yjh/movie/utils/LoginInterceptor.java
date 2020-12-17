@@ -36,6 +36,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(url.indexOf("/welcome/login")>=0) {
             return true;
         }
+        if(url.indexOf("/user/login")>=0) {
+            return true;
+        }
+        if(url.indexOf("/welcome/forgetpwd")>=0) {
+            return true;
+        }
         //获取session
         HttpSession session = request.getSession();
         User users = (User) session.getAttribute("users");

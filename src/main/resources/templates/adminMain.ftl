@@ -22,7 +22,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${request.contextPath}/tomain">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -34,7 +34,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="${request.contextPath}/tomain">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>主页</span></a>
         </li>
@@ -59,7 +59,7 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="MainUser2.html">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>聊天室</span></a>
         </li>
@@ -275,7 +275,7 @@
             <div class="modal-body">你将会退出此界面并且回到登录界面</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                <a class="btn btn-primary" href="${request.contextPath}/">确认</a>
+                <a class="btn btn-primary" href="${request.contextPath}/user/logout">确认</a>
             </div>
         </div>
     </div>

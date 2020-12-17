@@ -60,5 +60,11 @@ public class UserController {
     }
 
 
+    //注销
+    @RequestMapping("/logout")
+    public  String logout(HttpSession session){
+        session.invalidate();
+        return "login";
+    }
 
 }
