@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +22,16 @@ public class UserMapperTest {
     public void testFindAll(){
         List<User> users = userMapper.selectList(null);
         users.forEach(user -> System.out.println("user="+user));
+//        String codenumber = new FindPwdByPhone().Codenumber();
+//        System.out.println(codenumber);
+
     }
 
     // 根据主键id查询
     @Test
     public void testFindbyID(){
         User user = userMapper.selectById("202002");
+
         System.out.println("User="+user);
 
     }
@@ -85,6 +88,16 @@ public class UserMapperTest {
         user.setUpassword("new123");
         QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.eq("uemail","1912455977@qq.com");
+        userMapper.update(user,userQueryWrapper);
+    }
+
+    // 根据手机号修改密码
+    @Test
+    public void testUpadtebyphone(){
+        User user = new User();
+        user.setUpassword("7k7k7k");
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.eq("uphonenumber","18970570854");
         userMapper.update(user,userQueryWrapper);
     }
 

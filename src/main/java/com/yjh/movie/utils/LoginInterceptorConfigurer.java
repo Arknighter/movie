@@ -24,6 +24,7 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
                 .excludePathPatterns("/img/**")
                 .excludePathPatterns("/vendor/**")
                 .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/user/logout");
+                .excludePathPatterns("/user/**")
+                .excludePathPatterns("/favicon.ico");
     }
 }

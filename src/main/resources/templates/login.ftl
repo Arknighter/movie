@@ -24,7 +24,7 @@
                 <form  action="${request.contextPath}/user/login" method="post">
 <#--                    <form onsubmit="return false" action="##" >-->
                     <h2>登录</h2>
-                    <input type="email" name="uname" placeholder="邮箱">
+                    <input type="phone" name="uname" placeholder="手机号">
                     <input type="password" name="upwd" placeholder="密码">
                     <input type="submit" value="登录" >
                     <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
@@ -37,14 +37,15 @@
 
         <div class="user singupBx">
             <div class="formBx">
-                <form action="">
+                <form onsubmit="return false" action="##" >
                     <h2>注册</h2>
-                    <input type="text" name="" placeholder="用户名">
+                    <input type="email" id="registerEmail" placeholder="邮箱" onblur="findEmail()">
                     <p id="message"></p>
-                    <input type="email" name="" placeholder="邮箱地址">
-                    <input type="password" name="" placeholder="密码">
-                    <input type="password" name="" placeholder="再次输入密码">
-                    <input type="submit" name="" value="注册">
+                    <input type="tel" id="registerPhone" placeholder="手机号" onblur="findPhone()">
+                    <input type="password" id="registerPwd" placeholder="密码" onblur="rePwd()">
+                    <input type="password" id="registerRePwd" placeholder="再次输入密码" onblur="rePwd()">
+                    <input type="submit" id="registerButton" value="注册"  onclick="registerUser()">
+<#--                    <input type="submit" onclick="mytoast()" value="注册2" >-->
                     <p class="signup">已有账号？<a href="#" onclick="topggleForm();">登录</a></p>
                 </form>
             </div>
@@ -53,6 +54,7 @@
 
 
     </div>
+    <div id="snackbar">   默认值</div>
 </section>
 <script type="text/javascript">
     function topggleForm(){

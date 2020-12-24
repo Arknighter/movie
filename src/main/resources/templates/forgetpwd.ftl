@@ -10,22 +10,23 @@
 <body>
 <script src="/webjars/jquery/jquery.min.js "></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
+<script src="${request.contextPath}/js/mylogin.js"></script>
 
 <section class="section">
 
-    <!-- 忘记密码-发送邮件 -->
+    <!-- 忘记密码-发送验证码 -->
 
     <div class="container">
         <div class="user singinBx  ">
             <div class="imgBx"><img src="${request.contextPath}/img/findpw.jpg" alt=""></div>
             <div class="formBx">
-                <form action="">
+                <#--  <form></form>表单会拦截请求-->
+                <form onsubmit="return false" action="##" >
                     <h2>忘记密码</h2>
-                    <p>通过短信找回你的密码（需要连接互联网)</p>
-                    <input type="email" name="" placeholder="邮箱地址">
-                    <input type="text" name="" placeholder="验证码">
-                    <input type="submit" name="" value="发送验证码">
+                    <input type="tel"  id="forgetPhone" placeholder="手机号" onblur="forgetfindPhone()">
+                    <input type="text" name="" id="code" placeholder="验证码">
+                    <input type="submit" name="" id="codeButton" value="发送验证码" onclick="sendSMS()">
+                <#-- 测试tosat                   <input type="submit" value="test" onclick="mytoast()">-->
                     <div class="gopasswddiv"><a href="#" onclick="topggleForm()"  class="gopasswd" > 验证</a></div>
                     <p class="signup">想起来密码？<a href="${request.contextPath}/welcome/login" >登录</a></p>
                 </form>
@@ -39,33 +40,21 @@
         <div class="user singupBx">
 
             <div class="formBx">
-                <form action="">
+                <#--  <form></form>表单会拦截请求-->
+                <form onsubmit="return false" action="##" >
                     <h2>输入新密码</h2>
-                    <input type="password" name="" placeholder="新密码" onkeydown="imgchange()" onblur="reimg()" >
-                    <input type="password" name="" placeholder="再次输入新密码" onkeydown="imgchange()" onblur="reimg()">
-                    <input type="submit" name="" value="重置密码">
+                    <input type="password" id="registerPwd" placeholder="新密码" onkeydown="imgchange()" onblur="reimg();rePwd();" >
+                    <input type="password" id="registerRePwd" placeholder="再次输入新密码" onkeydown="imgchange()" onblur="reimg();rePwd();">
+                    <input type="submit" id="registerButton" value="重置密码" onclick="checkSMS()">
                     <p class="signup">已有账号？<a href="${request.contextPath}/welcome/login" >登录</a></p>
                 </form>
             </div>
             <div class="imgBx"><img id="myimg" src="${request.contextPath}/img/account.png" alt="" ></div>
         </div>
     </div>
+    <div id="snackbar">   默认值</div>
 </section>
-<script type="text/javascript">
-    function topggleForm(){
-        var container = document.querySelector('.container');
-        container.classList.toggle('active');
-    }
 
-    function imgchange(){
-        //alert("1");
-        document.getElementById("myimg").src='${request.contextPath}/img/password.png';
-    }
-    function reimg(){
-        //  alert("2");
-        document.getElementById("myimg").src='${request.contextPath}/img/account.png';
-    }
-</script>
 
 </body>
 </html>

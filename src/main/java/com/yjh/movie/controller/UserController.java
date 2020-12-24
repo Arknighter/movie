@@ -2,13 +2,11 @@ package com.yjh.movie.controller;
 
 import com.yjh.movie.po.User;
 import com.yjh.movie.service.UserService;
+import com.yjh.movie.utils.ReturnCode;
 import org.apache.catalina.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,25 +28,25 @@ public class UserController {
     }
 
 
-    @GetMapping("/findall")
-    public String findall(Model model){
-
-        List<User> users = userService.findall();
-
-        model.addAttribute("users",users);
-
-        return "freemarkertemp";
-    }
+//    @GetMapping("/findall")
+//    public String findall(Model model){
+//
+//        List<User> users = userService.findall();
+//
+//        model.addAttribute("users",users);
+//
+//        return "freemarkertemp";
+//    }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    //登录  ulevel = 0; ustatus = 0; 普通用户 和 正常状态账号登录
+    //登录  ulevel = 0; ustatus = 0; 普通用户 和 正常状态账号登录 查询
     public String Login(Integer ulevel, Integer ustatus, HttpServletRequest request,HttpSession session){
         ulevel = 0; ustatus = 0;
-        String email = request.getParameter("uname");
+        String uphonenumber = request.getParameter("uname");
         String pwd = request.getParameter("upwd");
-        List<User> users = userService.Login(email, pwd, ulevel, ustatus);
+        List<User> users = userService.Login(uphonenumber, pwd, ulevel, ustatus);
         //System.out.println(users);
-        if (users.size()!= 0 && email != "" && pwd != "") {
+        if (users.size()!= 0 && uphonenumber != "" && pwd != "") {
            // model.addAttribute("users",users);
             session.setAttribute("users",users);
             System.out.println("成功进入");
@@ -66,5 +64,87 @@ public class UserController {
         session.invalidate();
         return "login";
     }
+
+
+
+    //注册 密码不相同用ajax做
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @ResponseBody
+    public String register(String uemail,String uphonenumber,String pwd){
+        Integer num = userService.addUser(uemail, uphonenumber, pwd);
+        if (num == 1){
+            return "ok";
+        }
+        return "no";
+
+    }
+
+    //根据电话查询
+    @RequestMapping(value = "/findphone",method = RequestMethod.POST)
+    @ResponseBody
+    public String findbyPhone(String phonenumber){
+        List<User> userList = userService.registerFindByPhone(phonenumber);
+        if(userList.size()>0){
+            return "ok";
+        }
+        return "no";
+    }
+
+    //根据邮箱查询
+    @RequestMapping(value = "/findemail",method = RequestMethod.POST)
+    @ResponseBody
+    public String findbyEmail(String email){
+        List<User> userList = userService.registerFindByEmail(email);
+        if(userList.size()>0){
+            return "ok";
+        }
+        return "no";
+    }
+
+    //用于验证
+    String codenumber;
+    //发送验证码
+    @RequestMapping(value = "/sendSMS",method = RequestMethod.POST)
+    @ResponseBody
+    public  String sendSMS(String phonenumber){
+
+        // 直接本地模拟发送
+        String code = new ReturnCode().sendSmsNOaliyun(phonenumber);
+        //利用阿里云发送短信 需要付费
+        //String code = new ReturnCode().sendSms(phonenumber);
+
+        codenumber = code;
+        //System.out.println(codenumber+code);
+        if (code!=null){
+            return "ok";
+        }
+        return "no";
+    }
+
+    //得到前段写的验证码 本页面跳转
+    @RequestMapping(value = "/code",method = RequestMethod.POST)
+    @ResponseBody
+    public  String code(String code){
+        if(codenumber.equals(code)){
+            codenumber ="";
+            return "ok";
+
+        }
+        return "no";
+    }
+
+    //验证验证码然后根据手机号改密码
+    @RequestMapping(value = "/checkSMS",method = RequestMethod.POST)
+    @ResponseBody
+    public String updataUserByPhone(String phonenumber,String pwd){
+        Integer integer = userService.updataUserByPhone(phonenumber, pwd);
+        if (integer == 1){
+            return "ok";
+        }
+
+    return "no";
+
+    }
+
 
 }
