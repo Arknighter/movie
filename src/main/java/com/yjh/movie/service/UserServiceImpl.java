@@ -34,11 +34,10 @@ public class UserServiceImpl implements UserService{
 
     //登录（根据用户名和密码查询用户）
     @Override
-    public List<User> Login(String uphonenumber,String pwd,Integer ulevel,Integer ustatus) {
+    public List<User> Login(String uphonenumber,String pwd,Integer ustatus) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("uphonenumber",uphonenumber)
                 .eq("upassword",pwd)
-                .eq("ulevel",ulevel)
                 .eq("ustatus",ustatus);
         List<User> users = userMapper.selectList(queryWrapper);
 

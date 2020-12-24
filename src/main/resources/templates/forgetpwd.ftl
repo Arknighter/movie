@@ -27,7 +27,7 @@
                     <input type="text" name="" id="code" placeholder="验证码">
                     <input type="submit" name="" id="codeButton" value="发送验证码" onclick="sendSMS()">
                 <#-- 测试tosat                   <input type="submit" value="test" onclick="mytoast()">-->
-                    <div class="gopasswddiv"><a href="#" onclick="topggleForm()"  class="gopasswd" > 验证</a></div>
+                    <div class="gopasswddiv" id="codeButton2"><a href="#" onclick="topggleForm()"  class="gopasswd" > 验证</a></div>
                     <p class="signup">想起来密码？<a href="${request.contextPath}/welcome/login" >登录</a></p>
                 </form>
             </div>

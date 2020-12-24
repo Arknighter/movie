@@ -11,7 +11,7 @@ public interface UserService {
     public List<User> findall();
 
     //登录
-    public List<User> Login(String uphonenumber,String pwd,Integer ulevel,Integer ustatus);
+    public List<User> Login(String uphonenumber,String pwd,Integer ustatus);
 
     //注册
     public Integer addUser(String uemail,String uphonenumber,String pwd);

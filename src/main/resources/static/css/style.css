@@ -244,6 +244,12 @@ section .container.active .singinBx .imgBx {
     font-size: 17px;
 }
 
+#codeButton2{
+    pointer-events: none;
+    background-color:#f5f5f5;
+}
+
+
 #snackbar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;

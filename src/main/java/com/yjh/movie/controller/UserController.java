@@ -39,17 +39,27 @@ public class UserController {
 //    }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    //登录  ulevel = 0; ustatus = 0; 普通用户 和 正常状态账号登录 查询
-    public String Login(Integer ulevel, Integer ustatus, HttpServletRequest request,HttpSession session){
-        ulevel = 0; ustatus = 0;
+    //登录 普通用户（level = 0） 和 正常状态账号登录（level = 1）
+    public String Login( Integer ustatus, HttpServletRequest request,HttpSession session){
+        ustatus = 0;//正常用户
+        int level = 0;
         String uphonenumber = request.getParameter("uname");
         String pwd = request.getParameter("upwd");
-        List<User> users = userService.Login(uphonenumber, pwd, ulevel, ustatus);
+        List<User> users = userService.Login(uphonenumber, pwd, ustatus);
+        for (User user:users) {
+          level =  user.getUlevel();
+        }
+
         //System.out.println(users);
-        if (users.size()!= 0 && uphonenumber != "" && pwd != "") {
+        if (users.size()!= 0 && uphonenumber != "" && pwd != "" && level == 1) {
            // model.addAttribute("users",users);
             session.setAttribute("users",users);
-            System.out.println("成功进入");
+            System.out.println("成功进入管理员界面");
+            return "adminMain";
+        }else if(users.size()!= 0 && uphonenumber != "" && pwd != "" && level == 0) {
+            // model.addAttribute("users",users);
+            session.setAttribute("users", users);
+            System.out.println("成功进入普通用户界面");
             return "adminMain";
         }
         else

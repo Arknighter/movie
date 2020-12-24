@@ -98,6 +98,7 @@ function forgetfindPhone(){
 function sendSMS() {
     let phonenumber = $('#forgetPhone').val();
     let codeButton = document.getElementById("codeButton");
+    let button = document.getElementById("codeButton2");
     let x = document.getElementById("snackbar");
     $.ajax({
         url:"/user/sendSMS",
@@ -111,6 +112,8 @@ function sendSMS() {
                     x.className = x.className.replace("show", "");
                     codeButton.disabled=true;
                     codeButton.style.backgroundColor="#f5f5f5";
+                    button.style.pointerEvents="auto";
+                    button.style.backgroundColor="#677eff";
                 }, 3000);
             }else {
                 x.className = "show";
@@ -200,7 +203,7 @@ function topggleForm(){
 
     let code = $('#code').val();
     let container = document.querySelector('.container');
-
+    let button = document.getElementById("codeButton2");
     let x = document.getElementById("snackbar");
 
     $.ajax({
@@ -209,11 +212,13 @@ function topggleForm(){
         data:{"code":code},
         success:function (data){
             if (data.toString() == "ok"){
+                button.style.pointerEvents="none";
+                button.style.backgroundColor="#00CC00";
                 x.className = "show";
                 x.innerHTML="验证成功.... 即将跳转";
                 setTimeout(function() {
                     x.className = x.className.replace("show", "");
-                    //切换到输入验证码
+                    //切换到输入密码
                    container.classList.toggle('active');
                 }, 1000);
 
