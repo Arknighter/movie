@@ -1,0 +1,65 @@
+* {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+.autoimg{
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    color: #fff;
+    background: linear-gradient(-45deg,#ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+
+}
+@keyframes gradientBG{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.Main .bodymain .movieimg .bgfilter {
+    position: absolute;
+    height: 10.8rem;
+    width: 55%;
+    background: -webkit-gradient(linear,left top,right top,from(#171717),color-stop(20%,rgba(23,23,23,.98)),color-stop(25%,rgba(23,23,23,.97)),color-stop(35%,rgba(23,23,23,.95)),color-stop(40%,rgba(23,23,23,.94)),color-stop(45%,rgba(23,23,23,.92)),color-stop(50%,rgba(23,23,23,.9)),color-stop(55%,rgba(23,23,23,.87)),color-stop(60%,rgba(23,23,23,.82)),color-stop(65%,rgba(23,23,23,.75)),color-stop(70%,rgba(23,23,23,.63)),color-stop(75%,rgba(23,23,23,.45)),color-stop(80%,rgba(23,23,23,.27)),color-stop(85%,rgba(23,23,23,.15)),color-stop(90%,rgba(23,23,23,.08)),color-stop(95%,rgba(23,23,23,.03)),to(rgba(23,23,23,0)));
+                  background-image: linear-gradient(to right, rgb(23, 23, 23) 0px, rgba(23, 23, 23, 0.98) 20%, rgba(23, 23, 23, 0.97) 25%, rgba(23, 23, 23, 0.95) 35%, rgba(23, 23, 23, 0.94) 40%, rgba(23, 23, 23, 0.92) 45%, rgba(23, 23, 23, 0.9) 50%, rgba(23, 23, 23, 0.87) 55%, rgba(23, 23, 23, 0.82) 60%, rgba(23, 23, 23, 0.75) 65%, rgba(23, 23, 23, 0.63) 70%, rgba(23, 23, 23, 0.45) 75%, rgba(23, 23, 23, 0.27) 80%, rgba(23, 23, 23, 0.15) 85%, rgba(23, 23, 23, 0.08) 90%, rgba(23, 23, 23, 0.03) 95%, rgba(23, 23, 23, 0) 100%);
+                  background-position-x: initial;
+                  background-position-y: initial;
+                  background-size: initial;
+                  background-repeat-x: initial;
+                  background-repeat-y: initial;
+                  background-attachment: initial;
+                  background-origin: initial;
+                  background-clip: initial;
+                  background-color: initial;
+  
+                  background: -webkit-linear-gradient(left,#171717 0,rgba(23,23,23,.98) 20%,rgba(23,23,23,.97) 25%,rgba(23,23,23,.95) 35%,rgba(23,23,23,.94) 40%,rgba(23,23,23,.92) 45%,rgba(23,23,23,.9) 50%,rgba(23,23,23,.87) 55%,rgba(23,23,23,.82) 60%,rgba(23,23,23,.75) 65%,rgba(23,23,23,.63) 70%,rgba(23,23,23,.45) 75%,rgba(23,23,23,.27) 80%,rgba(23,23,23,.15) 85%,rgba(23,23,23,.08) 90%,rgba(23,23,23,.03) 95%,rgba(23,23,23,0) 100%);
+                  background-image: linear-gradient(to right, rgb(23, 23, 23) 0px, rgba(23, 23, 23, 0.98) 20%, rgba(23, 23, 23, 0.97) 25%, rgba(23, 23, 23, 0.95) 35%, rgba(23, 23, 23, 0.94) 40%, rgba(23, 23, 23, 0.92) 45%, rgba(23, 23, 23, 0.9) 50%, rgba(23, 23, 23, 0.87) 55%, rgba(23, 23, 23, 0.82) 60%, rgba(23, 23, 23, 0.75) 65%, rgba(23, 23, 23, 0.63) 70%, rgba(23, 23, 23, 0.45) 75%, rgba(23, 23, 23, 0.27) 80%, rgba(23, 23, 23, 0.15) 85%, rgba(23, 23, 23, 0.08) 90%, rgba(23, 23, 23, 0.03) 95%, rgba(23, 23, 23, 0) 100%);
+                  background-position-x: initial;
+                  background-position-y: initial;
+                  background-size: initial;
+                  background-repeat-x: initial;
+                  background-repeat-y: initial;
+                  background-attachment: initial;
+                  background-origin: initial;
+                  background-clip: initial;
+                  background-color: initial;
+                  background: linear-gradient(to right,#171717 0,rgba(23,23,23,.98) 20%,rgba(23,23,23,.97) 25%,rgba(23,23,23,.95) 35%,rgba(23,23,23,.94) 40%,rgba(23,23,23,.92) 45%,rgba(23,23,23,.9) 50%,rgba(23,23,23,.87) 55%,rgba(23,23,23,.82) 60%,rgba(23,23,23,.75) 65%,rgba(23,23,23,.63) 70%,rgba(23,23,23,.45) 75%,rgba(23,23,23,.27) 80%,rgba(23,23,23,.15) 85%,rgba(23,23,23,.08) 90%,rgba(23,23,23,.03) 95%,rgba(23,23,23,0) 100%);
+                  background-image: linear-gradient(to right, rgb(23, 23, 23) 0px, rgba(23, 23, 23, 0.98) 20%, rgba(23, 23, 23, 0.97) 25%, rgba(23, 23, 23, 0.95) 35%, rgba(23, 23, 23, 0.94) 40%, rgba(23, 23, 23, 0.92) 45%, rgba(23, 23, 23, 0.9) 50%, rgba(23, 23, 23, 0.87) 55%, rgba(23, 23, 23, 0.82) 60%, rgba(23, 23, 23, 0.75) 65%, rgba(23, 23, 23, 0.63) 70%, rgba(23, 23, 23, 0.45) 75%, rgba(23, 23, 23, 0.27) 80%, rgba(23, 23, 23, 0.15) 85%, rgba(23, 23, 23, 0.08) 90%, rgba(23, 23, 23, 0.03) 95%, rgba(23, 23, 23, 0) 100%);
+                  background-position-x: initial;
+                  background-position-y: initial;
+                  background-size: initial;
+                  background-repeat-x: initial;
+                  background-repeat-y: initial;
+                  background-attachment: initial;
+                  background-origin: initial;
+                  background-clip: initial;
+                  background-color: initial;              
+  }

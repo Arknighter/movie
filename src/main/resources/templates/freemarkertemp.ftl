@@ -10,16 +10,14 @@
 <div class="container">
     <table class="table">
         <tr>
-            <td>名字</td>
-            <td>邮箱</td>
-            <td>密码</td>
+            <td>id</td>
+            <td>电影名称</td>
         </tr>
 
-        <#list users as users>
+        <#list movielist as movielist>
             <tr>
-                <td>${users.uname}</td>
-                <td>${users.uemail}</td>
-                <td>${users.upassword}</td>
+                <td>${movielist.movieid}</td>
+                <td>${movielist.movietitle}</td>
             </tr>
         </#list>
     </table>

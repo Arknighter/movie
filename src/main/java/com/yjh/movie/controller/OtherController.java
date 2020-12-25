@@ -13,6 +13,11 @@ public class OtherController {
         return "login";
     }
 
+    @RequestMapping("/index")
+    public String  toIndex(){
+        return "userIndex";
+    }
+
     @RequestMapping("/forgetpwd")
     public String  toForgetPWD(){
         return "forgetpwd";

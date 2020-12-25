@@ -60,7 +60,7 @@ public class UserController {
             // model.addAttribute("users",users);
             session.setAttribute("users", users);
             System.out.println("成功进入普通用户界面");
-            return "adminMain";
+            return "userMain";
         }
         else
             System.out.println("进入失败");
@@ -81,9 +81,16 @@ public class UserController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
     public String register(String uemail,String uphonenumber,String pwd){
-        Integer num = userService.addUser(uemail, uphonenumber, pwd);
-        if (num == 1){
-            return "ok";
+      // System.out.println("============"+pwd);
+        List<User> users = userService.registerFindByPhone(uphonenumber);
+        List<User> users1 = userService.registerFindByEmail(uemail);
+        if(users.size()>0 || users1.size()>0){
+            return "no";
+        }else if (pwd != null && pwd !=""){
+            Integer  num  = userService.addUser(uemail, uphonenumber, pwd);
+            if (num == 1){
+                return "ok";
+            }
         }
         return "no";
 

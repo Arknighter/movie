@@ -48,6 +48,15 @@ function findEmail(){
 function findPhone(){
     let phonenumber = $('#registerPhone').val();
     let registerButton = document.getElementById("registerButton");
+    let x = document.getElementById("snackbar");
+    if(phonenumber.length>11){
+        x.className = "show";
+        x.innerHTML="手机号过长";
+        setTimeout(function() {
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
+
     $.ajax({
         url:"/user/findphone",
         type:"POST",
@@ -74,6 +83,7 @@ function findPhone(){
 function forgetfindPhone(){
     let phonenumber = $('#forgetPhone').val();
     let codeButton = document.getElementById("codeButton");
+
     $.ajax({
         url:"/user/findphone",
         type:"POST",
@@ -117,7 +127,7 @@ function sendSMS() {
                 }, 3000);
             }else {
                 x.className = "show";
-                x.innerHTML="注册发生未知错误，请刷新界面....";
+                x.innerHTML="发生未知错误，请刷新界面....";
                 setTimeout(function() {
                     x.className = x.className.replace("show", "");
                 }, 3000);
@@ -137,7 +147,7 @@ function rePwd() {
     let registerRePwdStyle = document.getElementById("registerRePwd");
     let registerButton = document.getElementById("registerButton");
     //console.log(registerRePwd,registerPwd)
-    if (registerRePwd == registerPwd){
+    if (registerRePwd == registerPwd && registerPwd!=""){
         registerRePwdStyle.style.border="";
         registerButton.disabled=false;
         registerButton.style.backgroundColor="#677eff";
@@ -173,10 +183,10 @@ function registerUser() {
                 }, 3000);
             }else {
                 x.className = "show";
-                x.innerHTML="注册发生未知错误，即将刷新界面....";
+                x.innerHTML="请输入正确信息，红色表示已经注册或者不可用....";
                 setTimeout(function() {
                     x.className = x.className.replace("show", "");
-                    location.reload();
+
                 }, 3000);
             }
         }

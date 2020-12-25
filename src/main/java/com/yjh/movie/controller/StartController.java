@@ -9,12 +9,17 @@ public class StartController {
 
     @RequestMapping("/")
     public String homePage() {
-        return "login";
+        return "userIndex";
     }
 
     @RequestMapping("/tomain")
     public String  toMain(){
         return "adminMain";
+    }
+
+    @RequestMapping("/tousermain")
+    public String  toUserMain(){
+        return "userMain";
     }
 
 }

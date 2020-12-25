@@ -3,6 +3,7 @@ package com.yjh.movie;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yjh.movie.Mapper.UserMapper;
 import com.yjh.movie.po.User;
+import com.yjh.movie.utils.DozerUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ public class UserMapperTest {
     public void testFindAll(){
         List<User> users = userMapper.selectList(null);
         users.forEach(user -> System.out.println("user="+user));
+
 //        String codenumber = new FindPwdByPhone().Codenumber();
 //        System.out.println(codenumber);
 

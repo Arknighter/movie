@@ -42,6 +42,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(url.indexOf("/welcome/forgetpwd")>=0) {
             return true;
         }
+        if(url.indexOf("/welcome/index")>=0) {
+            return true;
+        }
         //获取session
         HttpSession session = request.getSession();
         Object users = session.getAttribute("users");
@@ -50,7 +53,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        request.getRequestDispatcher("/welcome/login").forward(request, response);
+        request.getRequestDispatcher("/welcome/index").forward(request, response);
         return false;
     }
 

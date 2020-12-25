@@ -13,7 +13,6 @@
 
 </head>
 
-<body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -26,7 +25,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">电影管理后台<sup>admin</sup></div>
+            <div class="sidebar-brand-text mx-3">网址首页<sup>back</sup></div>
         </a>
 
         <!-- Divider -->
@@ -36,32 +35,19 @@
         <li class="nav-item active">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>主页</span></a>
+                <span>个人主页</span></a>
         </li>
+
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>功能列表</span>
-            </a>
-            <div id="collapsePages" class="collapse"  >
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#">用户管理</a>
-                    <a class="collapse-item" href="#">添加影片信息</a>
-                    <a class="collapse-item" href="#">标签库管理</a>
-                </div>
-            </div>
-        </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>影片库</span></a>
+                <span>收藏库</span></a>
         </li>
 
         <!-- Divider -->
@@ -71,7 +57,7 @@
 
     </ul>
     <!-- End of Sidebar -->
-
+</div>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -145,36 +131,16 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">主界面</h1>
-                    <!-- <i class="fas fa-download fa-sm text-white-50"></i> -->
-                    <p  id="Times" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> 时间模块</p>
+                    <h1 class="h3 mb-0 text-gray-800">个人中心</h1>
                 </div>
 
-                <!-- Content Row -->
+<#--               中间主内容-->
                 <div class="row">
 
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">总影片数</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">20部</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
 
-
-
-            </div>
+                </div>
             <!-- /.container-fluid -->
 
         </div>
@@ -184,7 +150,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; 心海电影后台管理 2020 by晏江海</span>
+                    <span>Copyright © 心海电影 2020 by晏江海</span>
                 </div>
             </div>
         </footer>
@@ -234,32 +200,8 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script src="/webjars/jquery/jquery.min.js "></script>
 
-<script>
-    // 递归刷新系统时间
-    getCode();
-    function getCode(){
-        i = self.setInterval("countdown()", 1000);
-    }
-    function countdown() {
-        var myDate = new Date();
-        //获取当前年
-        var year=myDate.getFullYear();
-        //获取当前月
-        var month=myDate.getMonth()+1;
-        //获取当前日
-        var date=myDate.getDate();
-        var h=myDate.getHours();       //获取当前小时数(0-23)
-        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
-        var s=myDate.getSeconds();
-        var now=year+'-'+getNow(month)+"-"+getNow(date)+" "+getNow(h)+':'+getNow(m)+":"+getNow(s);
-        // 赋值给展示时间
-        $('#Times').html(now);
-    }
-    // 获取当前时间
-    function getNow(s) {
-        return s < 10 ? '0' + s: s;
-    }
-</script>
+
 </body>
+
 
 </html>

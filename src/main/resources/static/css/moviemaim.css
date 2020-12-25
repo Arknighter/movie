@@ -1,0 +1,325 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.Main {
+  position: relative;
+  width: 100%;
+  height: 2400px;
+  background-color: #181818;
+}
+.Main .top {
+  position: fixed;
+  height: 0.7rem;
+  width: 100%;
+  background-color: #000;
+  z-index: 5;
+}
+.Main .top .logo {
+  position: absolute;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.125rem;
+  margin-left: 0.625rem;
+  background-image: url("/img/logo2.png");
+  background-size: 100%;
+}
+.Main .top .unloginuserBox .register {
+  position: absolute;
+  margin-top: 0.12rem;
+  margin-bottom: 0.15rem;
+  height: 0.45rem;
+  width: 1.25rem;
+  right: 10%;
+  text-align: center;
+  line-height: 0.45rem;
+  color: white;
+  background-color: #e50914;
+}
+.Main .top .unloginuserBox .login {
+  position: absolute;
+  margin-top: 0.12rem;
+  margin-bottom: 0.15rem;
+  right: 5.5%;
+  height: 0.42rem;
+  width: 0.9rem;
+  text-align: center;
+  line-height: 0.45rem;
+  color: white;
+  border: white 0.0125rem solid;
+}
+.Main .top .unloginuserBox .unloginuser {
+  position: absolute;
+  width: 3.5rem;
+  height: 0.7rem;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  line-height: 0.7rem;
+  right: 12%;
+}
+.Main .top .loginuserBox {
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 4rem;
+  margin-right: 3%;
+}
+.Main .top .loginuserBox .username {
+  display: inline-block;
+  width: 2.75rem;
+  height: 0.7rem;
+  font-size: 0.05rem;
+  right: 0;
+  text-align: right;
+  line-height: 0.7rem;
+  color: white;
+}
+.Main .top .loginuserBox .loginuser {
+  display: inline-block;
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 3%;
+  margin-left: 1%;
+  background-image: url(/img/headimg.jpg);
+  background-size: 100%;
+  border-radius: 50%;
+  border: #181818 0.1rem solid;
+}
+.Main .top .userConter {
+  display: none;
+  position: absolute;
+  margin-right: 4.2%;
+  width: 1.1rem;
+  height: 1.4rem;
+  margin-top: 0.75rem;
+  background-color: white;
+  right: 0;
+  box-shadow: #181818;
+}
+.Main .top .userConter a {
+  text-decoration: none;
+  color: #000;
+}
+.Main .top .userConter .userSpace {
+  width: 1.1rem;
+  height: 0.7rem;
+  text-align: center;
+  line-height: 0.7rem;
+  border-bottom: black 1px solid;
+}
+.Main .top .userConter .loginOut {
+  width: 1.1rem;
+  height: 0.7rem;
+  text-align: center;
+  line-height: 0.7rem;
+}
+.Main .bodymain {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 3200px;
+  background-color: #181818;
+}
+.Main .bodymain .movieimg {
+  position: relative;
+  height: 9.8rem;
+  width: 100%;
+}
+.Main .bodymain .movieimg .bgfilter .moviename {
+  margin-top: 30%;
+  margin-left: 5%;
+  width: 100%;
+  height: 1.5rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: white;
+  font-size: 0.75rem;
+}
+.Main .bodymain .movieimg .bgfilter .moviename h6 {
+  font-size: 0.2rem;
+  color: red;
+}
+.Main .bodymain .movieimg .bgfilter .movieMsg {
+  color: #a3a3a3;
+  margin-top: 7%;
+  margin-left: 5.2%;
+  width: 3.5rem;
+  height: 0.3rem;
+  font-size: 0.2rem;
+}
+.Main .bodymain .movieimg .bgfilter .movieMsg .movieYear {
+  display: inline;
+  padding-right: 10px;
+  border-right: #a3a3a3 1px solid;
+}
+.Main .bodymain .movieimg .bgfilter .movieMsg .movieTime {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 10px;
+  border-right: #a3a3a3 1px solid;
+}
+.Main .bodymain .movieimg .bgfilter .movieMsg .movieTag {
+  display: inline;
+  padding-left: 5px;
+}
+.Main .bodymain .movieimg .bgfilter .movieDetails {
+  margin-left: 5.2%;
+  font-size: 0.25rem;
+  color: white;
+  width: 7.5rem;
+  height: 0.6rem;
+  margin-top: 1%;
+  margin-left: 5%;
+}
+.Main .bodymain .movieimg .bgfilter .movielead {
+  color: #a3a3a3;
+  margin-top: 2%;
+  margin-left: 5%;
+  width: 6.5rem;
+  font-size: 0.23rem;
+  height: 0.3rem;
+}
+.Main .bodymain .movieimg .bgfilter .movielead h6 {
+  text-align: center;
+  font-size: 0.2rem;
+  color: #e4e4eb;
+  display: inline;
+}
+.Main .bodymain .movieimg .moviebg {
+  top: 0;
+  height: 10.8rem;
+  width: auto;
+  background-size: 100%;
+  background-image: url("/img/bg.jpg");
+}
+.Main .bodymain .movieimg .imgBotton {
+  position: absolute;
+  bottom: -1.325rem;
+  width: 86%;
+  height: 0.7rem;
+  margin-left: 7%;
+  margin-right: 7%;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(5%, #333), color-stop(95%, #181818));
+}
+.Main .bodymain .movieimg .imgBotton h6 {
+  display: inline-block;
+  text-align: left;
+  margin-left: 2%;
+  line-height: 0.7rem;
+  font-size: 0.3rem;
+  color: white;
+}
+.Main .bodymain .movieimg .imgBotton .register {
+  position: absolute;
+  height: 0.45rem;
+  width: 1.25rem;
+  right: 5%;
+  top: 0;
+  margin-top: 0.6%;
+  text-align: center;
+  line-height: 0.45rem;
+  color: white;
+  background-color: #e50914;
+}
+.Main .bodymain .aboutMovie {
+  margin-top: 1.7rem;
+  position: absolute;
+  width: 80%;
+  height: 10rem;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.Main .bodymain .aboutMovie .msg {
+  position: absolute;
+  height: 2rem;
+  width: 100%;
+}
+.Main .bodymain .aboutMovie .msg p {
+  display: inline;
+  text-align: left;
+  line-height: 2rem;
+  font-size: 0.42rem;
+  color: white;
+}
+.Main .bodymain .aboutMovie .msg .msgMovieName {
+  display: inline;
+  text-align: left;
+  line-height: 2rem;
+  font-size: 0.32rem;
+  color: #a3a3a3;
+}
+.Main .bodymain .aboutMovie .msg .msgMovie {
+  display: block;
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-size: 0.22rem;
+}
+.Main .moviesBody {
+  margin-top: 1rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: absolute;
+  width: 80%;
+  height: 2000px;
+  background-color: #181818;
+}
+.Main .moviesBody .autoimg {
+  margin: 1% 1%;
+  width: 98%;
+  height: 400px;
+  background-color: rebeccapurple;
+}
+.Main .moviesBody .moviesmain {
+  bottom: 0;
+  height: 1550px;
+  width: 98%;
+  margin: 1% 1%;
+}
+.Main .moviesBody .moviesmain span {
+  display: inline-block;
+  margin-top: 1%;
+  margin-left: 1.5%;
+  margin-right: 1%;
+  width: 14%;
+  height: 280px;
+}
+.Main .moviesBody .moviesmain span .moviesMainImg {
+  width: 100%;
+  height: 260px;
+}
+.Main .moviesBody .moviesmain span .moviesMainName {
+  color: #e4e4eb;
+  width: 100%;
+  height: 20px;
+  border-bottom: #a3a3a3 1px solid;
+  font-size: 100%;
+  text-align: center;
+  line-height: 20px;
+}
+.Main .aboutme {
+  position: absolute;
+  width: 80%;
+  height: 80px;
+  bottom: 0;
+  line-height: 80px;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-top: #6e6d6a 2px solid;
+  color: #e4e4eb;
+}
+.TIME {
+  margin-left: 400px;
+  z-index: 8;
+  position: fixed;
+  width: 400px;
+  height: 50px;
+}
+.TIME div {
+  display: inline;
+  height: 50px;
+  width: 120px;
+  background-color: salmon;
+}
