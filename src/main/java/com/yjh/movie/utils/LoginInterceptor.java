@@ -36,9 +36,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(url.indexOf("/welcome/login")>=0) {
             return true;
         }
-        if(url.indexOf("/user/login")>=0) {
-            return true;
-        }
         if(url.indexOf("/welcome/forgetpwd")>=0) {
             return true;
         }
@@ -53,7 +50,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        request.getRequestDispatcher("/welcome/index").forward(request, response);
+        request.getRequestDispatcher("/movie/findallbypage/1").forward(request, response);
         return false;
     }
 

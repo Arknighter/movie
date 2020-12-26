@@ -12,6 +12,7 @@
 <script src="/webjars/jquery/jquery.min.js "></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script src="${request.contextPath}/js/mylogin.js"></script>
+<script src="${request.contextPath}/js/main.js"></script>
 
 <section class="section">
 
@@ -21,12 +22,12 @@
         <div class="user singinBx">
             <div class="imgBx"><img src="${request.contextPath}/img/2.jpg" alt=""></div>
             <div class="formBx">
-                <form  action="${request.contextPath}/user/login" method="post">
-<#--                    <form onsubmit="return false" action="##" >-->
+<#--               <form  action="${request.contextPath}/user/login" method="post"> &lt;#&ndash; 不用ajax&ndash;&gt;-->
+                   <form onsubmit="return false" action="##" >
                     <h2>登录</h2>
-                    <input type="phone" name="uname" placeholder="手机号">
-                    <input type="password" name="upwd" placeholder="密码">
-                    <input type="submit" value="登录" >
+                    <input type="phone" name="uname"  id ="uname" placeholder="手机号">
+                    <input type="password" name="upwd" id="upwd" placeholder="密码">
+                    <input type="submit" value="登录" onclick="ajaxlogin()" >
                     <p class="signup">没有账号？<a href="#" onclick="topggleForm();">注册</a></p>
                     <p class="signup">忘记密码？<a href="${request.contextPath}/welcome/forgetpwd" >找回密码</a></p>
                 </form>

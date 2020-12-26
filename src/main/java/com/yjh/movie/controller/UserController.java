@@ -60,12 +60,43 @@ public class UserController {
             // model.addAttribute("users",users);
             session.setAttribute("users", users);
             System.out.println("成功进入普通用户界面");
-            return "userMain";
+            return "/movie/findall";
         }
         else
             System.out.println("进入失败");
             return "login";
     }
+
+
+
+    @RequestMapping(value = "/loginajax",method = RequestMethod.POST)
+    @ResponseBody
+    //登录 普通用户（level = 0） 和 正常状态账号登录（level = 1）
+    public String Loginajax( Integer ustatus, String uphonenumber,  String pwd,HttpServletRequest request,HttpSession session){
+        ustatus = 0;//正常用户
+        int level = 0;
+        List<User> users = userService.Login(uphonenumber, pwd, ustatus);
+        for (User user:users) {
+            level =  user.getUlevel();
+        }
+        //System.out.println(users);
+        if (users.size()!= 0 && uphonenumber != "" && pwd != "" && level == 1) {
+            // model.addAttribute("users",users);
+            session.setAttribute("users",users);
+            System.out.println("成功进入管理员界面");
+            return "admin";
+        }else if(users.size()!= 0 && uphonenumber != "" && pwd != "" && level == 0) {
+            // model.addAttribute("users",users);
+            session.setAttribute("users", users);
+            System.out.println("成功进入普通用户界面");
+            return "user";
+        }
+        else
+            System.out.println("进入失败");
+        return "no";
+    }
+
+
 
 
     //注销

@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer"><#--    解决图片403xx不显示等问题-->
     <title>电影主界面</title>
     <link rel="stylesheet" href="${request.contextPath}/css/other.css">
     <link rel="stylesheet" href="${request.contextPath}/css/moviemaim.css">
 </head>
+<script src="/webjars/jquery/jquery.min.js "></script>
 <script src="${request.contextPath}/js/flexible.js"></script>
 <script src="${request.contextPath}/js/main.js"></script>
-<body>
+<body onload="Mainlogin()">
 
 <div class="TIME">
     <div class="notlogin" onclick="notlogin()">notlogin</div>
     <div class="loginBAS" onclick="loginBAS()">loginBAS</div>
     <div class="loginMAIN" onclick="unloginMAIN()">unloginMAIN</div>
-    <div class="loginMAIN" onclick="loginMAIN()">loginMAIN</div>
+    <div class="loginMAIN" onclick="loginMAIN()" id="loginMAIN">loginMAIN</div>
 </div>
 <div class="Main"  >
     <!-- 顶部模块 -->
@@ -29,12 +31,15 @@
         </div>
 
         <div class="loginuserBox" id="loginuserBox">
-            <div class="username">欢迎你,holo</div>
+            <#list users! as users>
+                <div id="usersid" style="display: none">${users.uid!}</div>
+            <div class="username" id="username">欢迎你,${users.uname!}</div>
+            </#list>
             <div class="loginuser"  onclick="userConter()" onclick="ConterDie()"></div>
         </div>
         <div class="userConter" id="userConter" onMouseOver="userConter()" onMouseOut="ConterDie()" >
             <a href=""><div class="userSpace">个人中心</div></a>
-            <a href=""><div class="loginOut">切换登录</div></a>
+            <a href="${request.contextPath}/user/logout"><div class="loginOut">切换登录</div></a>
         </div>
     </section>
 
@@ -81,17 +86,30 @@
         <div class="autoimg"></div>
         <!-- 主体全部影片展示  30个-->
         <div class="moviesmain">
-                <span>
-                    <div class="moviesMainImg"></div>
-                    <div class="moviesMainName">电影名</div>
 
-                </span>
-            <!-- <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            <span></span> -->
+            <#list movielist as movielist>
+            <span>
+                    <a href="#"><div class="moviesMainImg" style=" background-size: 100%; background-image: url('https://${movielist.movieimgurl}') "></div></a>
+                    <div class="moviesMainName">${movielist.movietitle}</div>
+                    <div id="movieid" style="display: none">${movielist.movieid}</div>
+            </span>
+            </#list>
+
+<#--                <#assign x=0 />-->
+<#--                <#list movielist as movielist>-->
+<#--                <span>-->
+<#--                    <a href="#"><div class="moviesMainImg" style=" background-size: 100%; background-image: url('https://${movielist.movieimgurl}') "></div></a>-->
+<#--                    <div class="moviesMainName">${movielist.movietitle}</div>-->
+<#--                    <div id="movieid" style="display: none">${movielist.movieid}</div>-->
+<#--                <#assign x=x+1 />-->
+<#--                </span><#if x == 30> <#break> </#if>-->
+<#--                </#list>-->
+
+
+
         </div>
+        <a > <</a>
+        <a href="${request.contextPath}/movie/findallbypage/2"> ></a>
 
     </section>
 
@@ -104,6 +122,8 @@
 <script>
     // document.getElementById('moviename').innerHTML=('<h6>电影</h6>  狼的孩子雨和雪');
 
+
 </script>
 </body>
+
 </html>

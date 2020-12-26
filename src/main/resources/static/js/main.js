@@ -1,5 +1,57 @@
 
 
+// window.onload = function(){
+function Mainlogin(){
+    if($('#username').value == null){
+        let name = document.getElementById("username").innerText;
+        if(name != null ){
+            document.getElementById("loginMAIN").click();
+        }
+    }
+
+}
+
+
+//ajax login
+function ajaxlogin(){
+    let phone= $('#uname').val();
+    let pwd = $('#upwd').val();
+    let x = document.getElementById("snackbar");
+    $.ajax({
+        url:"/user/loginajax",
+        type:"POST",
+        data:{"uphonenumber":phone,"pwd":pwd},
+        success: function (data) {
+            if (data.toString() == "admin") {
+                x.className = "show";
+                x.innerHTML="欢迎你，管理员";
+                setTimeout(function() {
+                    x.className = x.className.replace("show", "");
+                    window.location.href="/tomain";
+                }, 1500);
+
+
+            }else if(data.toString() == "user"){
+                x.className = "show";
+                x.innerHTML="欢迎回来";
+                setTimeout(function() {
+                    x.className = x.className.replace("show", "");
+                    window.location.href="/movie/findall";
+
+                }, 1500);
+                //document.getElementById("loginMAIN").click();
+
+            }
+            else if(data.toString() == "no"){
+                window.location.href="/welcome/login";
+            }
+        }
+
+    })
+}
+
+
+
 // 控制点击头像动画
 function userConter(){
     document.getElementById("userConter").style.display = "block";
@@ -38,10 +90,14 @@ function loginBAS(){
 
 //主界面全部影片界面 登录后--------------------------------------
 function loginMAIN(){
+    // $('#bodymain').style.display="block";
+    // $('#unloginuserBox').style.display="none";
+    // $('#loginuserBox').style.display="block";
+    // $('#bodymain').style.display="none";
+    // $('#moviesBody').style.display="block";
     document.getElementById("bodymain").style.display="block"; //显示
     document.getElementById("unloginuserBox").style.display="none"; //不显示
     document.getElementById("loginuserBox").style.display="block"; //显示
-   // document.getElementById("userConter").style.display="block"; //显示
 
     document.getElementById("bodymain").style.display="none" ;//不显示
     document.getElementById("moviesBody").style.display="block";//显示

@@ -12,12 +12,20 @@
         <tr>
             <td>id</td>
             <td>电影名称</td>
+            <td>电影详情</td>
+            <td>电影标签id</td>
+            <td>电影时长</td>
+            <td>电影上映时间</td>
         </tr>
 
         <#list movielist as movielist>
             <tr>
                 <td>${movielist.movieid}</td>
                 <td>${movielist.movietitle}</td>
+                <td>${movielist.moviestory}</td>
+                <td>${movielist.movietid}</td>
+                <td>${movielist.movietime}</td>
+                <td>${movielist.movieuptime}</td>
             </tr>
         </#list>
     </table>

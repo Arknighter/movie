@@ -25,7 +25,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">网址首页<sup>back</sup></div>
+            <a href="${request.contextPath}/movie/findall"><div class="sidebar-brand-text mx-3">网址首页<sup>back</sup></div></a>
         </a>
 
         <!-- Divider -->
@@ -56,9 +56,7 @@
 
 
     </ul>
-    <!-- End of Sidebar -->
-</div>
-    <!-- Content Wrapper -->
+
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
@@ -102,7 +100,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <!-- 登录用户名 -->
                             <#list users as users>
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small " id = "username">${users.uname}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small " id = "username">${users.uname}</span>
                             </#list>
                             <!-- 用户头像地址img-profile rounded-circle -->
                             <img class="img-profile rounded-circle" src="${request.contextPath}/img/headimg.jpg" />
@@ -134,32 +132,36 @@
                     <h1 class="h3 mb-0 text-gray-800">个人中心</h1>
                 </div>
 
-<#--               中间主内容-->
+                <#--               中间主内容-->
                 <div class="row">
 
 
 
 
                 </div>
-            <!-- /.container-fluid -->
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © 心海电影 2020 by晏江海</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © 心海电影 2020 by晏江海</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
-
+    <!-- End of Sidebar -->
 </div>
+    <!-- Content Wrapper -->
+
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->

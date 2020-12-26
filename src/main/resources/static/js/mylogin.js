@@ -18,6 +18,10 @@
 // }
 
 
+
+
+
+
 //验证邮箱重复性
 function findEmail(){
     let email = $('#registerEmail').val();
