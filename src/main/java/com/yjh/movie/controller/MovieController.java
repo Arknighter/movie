@@ -39,11 +39,28 @@ public class MovieController {
         status=0;
         //nowpage=1;
         List<Movie> movieList = movieService.findAllByPage(status, nowpage);
+        Long pageCount = movieService.findAllByPageCount(status, nowpage);//总数据
+        int pageCounts = Math.toIntExact(pageCount);
+        int num = pageCounts/30+1;
         model.addAttribute("movielist",movieList);
+        System.out.println("总页数："+num +"当前页数："+nowpage);
         return "userIndex";
     }
 
+    @RequestMapping(value = "/main/{movieid}")
+    public String tomovieMain(@PathVariable("movieid") String id,Model model){
 
+        List<Movie> movieList = movieService.findById(id);
+        for (Movie movie: movieList) {
+            if(movie.getMoviestory().length()>25){
+                String story = movie.getMoviestory().substring(0,65)+"....";
+                movie.setMoviestory(story);
+            }
+
+        }
+        model.addAttribute("movies",movieList);
+        return "userIndex";
+    }
 
 
 }

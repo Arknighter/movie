@@ -144,7 +144,7 @@
   color: #a3a3a3;
   margin-top: 7%;
   margin-left: 5.2%;
-  width: 3.5rem;
+  width: 5.5rem;
   height: 0.3rem;
   font-size: 0.2rem;
 }
@@ -167,10 +167,11 @@
   margin-left: 5.2%;
   font-size: 0.25rem;
   color: white;
-  width: 7.5rem;
+  width: 8.5rem;
   height: 0.6rem;
   margin-top: 1%;
   margin-left: 5%;
+  margin-bottom: 2%;
 }
 .Main .bodymain .movieimg .bgfilter .movielead {
   color: #a3a3a3;

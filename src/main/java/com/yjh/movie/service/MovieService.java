@@ -13,4 +13,11 @@ public interface MovieService {
     //全查查询状态为0或者1的影片 进行分页
     public List<Movie> findAllByPage(Integer status,Integer nowpage);
 
+    //全查查询状态为0或者1的影片 进行分页
+    public Long findAllByPageCount(Integer status,Integer nowpage);
+
+    //根据movieid查询 电影
+
+    public  List<Movie> findById(String id);
+
 }

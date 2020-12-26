@@ -11,7 +11,7 @@
 <script src="/webjars/jquery/jquery.min.js "></script>
 <script src="${request.contextPath}/js/flexible.js"></script>
 <script src="${request.contextPath}/js/main.js"></script>
-<body onload="Mainlogin()" >
+<body onload="Mainlogin()">
 
 <div class="TIME">
     <div class="notlogin" onclick="notlogin()" id="notlogin">notlogin</div>
@@ -44,21 +44,21 @@
     </section>
 
     <!-- 影片详情模块 -->
-    <#list movies! as movies>
     <section class="bodymain" id="bodymain">
         <div class="movieimg" id="movieimg" >
             <div class="bgfilter">
 
-                <div class="moviename" id="moviename">   <h6>电影</h6>  ${movies.movietitle!}</div>
+                <div class="moviename" id="moviename">   <h6>电影</h6>  想哭的我戴上了猫的面具</div>
                 <div class="movieMsg">
-                    <div class="movieYear" id="movieYear">${movies.movieuptime!}</div>
-                    <div class="movieTime">${movies.movietime!}</div>
-<#--                    <div class="movieTag">爱情</div>-->
+                    <div class="movieYear">2020</div>
+                    <div class="movieTime">1小时32分</div>
+                    <div class="movieTag">爱情</div>
                 </div>
                 <!-- 电影详情 -->
-                <div class="movieDetails">${movies.moviestory!}</div>
-                <div class="movielead">人员：
-                    <h6>导演：${movies.moviedirector!}</h6>
+                <div class="movieDetails">一名古怪的女孩為了吸引心儀對象的目光，居然變成了一隻貓！但在不知不覺間，人類與動物之間的界線卻開始越來越模糊。</div>
+                <div class="movielead">主演：
+                    <h6>主演A</h6> ，
+                    <h6>主演B</h6> ，
                 </div>
             </div>
             <div class="moviebg"></div>
@@ -72,7 +72,7 @@
         <div class="aboutMovie">
             <div class="msg">
                 <p>资讯 ｜ </p>
-                <p class="msgMovieName">${movies.movietitle!}</p>
+                <p class="msgMovieName">想哭的我戴上了猫的面具</p>
                 <span class="msgMovie">
                         * NO MASSAGE
                     </span>
@@ -80,46 +80,6 @@
 
         </div>
     </section>
-    </#list>
-
-
-<#--    <!-- 影片详情模块备份 &ndash;&gt;-->
-<#--    <section class="bodymain" id="bodymain">-->
-<#--        <div class="movieimg" id="movieimg" >-->
-<#--            <div class="bgfilter">-->
-
-<#--                <div class="moviename" id="moviename">   <h6>电影</h6>  想哭的我戴上了猫的面具</div>-->
-<#--                <div class="movieMsg">-->
-<#--                    <div class="movieYear">2020</div>-->
-<#--                    <div class="movieTime">1小时32分</div>-->
-<#--                    <div class="movieTag">爱情</div>-->
-<#--                </div>-->
-<#--                <!-- 电影详情 &ndash;&gt;-->
-<#--                <div class="movieDetails">一名古怪的女孩為了吸引心儀對象的目光，居然變成了一隻貓！但在不知不覺間，人類與動物之間的界線卻開始越來越模糊。</div>-->
-<#--                <div class="movielead">主演：-->
-<#--                    <h6>主演A</h6> ，-->
-<#--                    <h6>主演B</h6> ，-->
-<#--                </div>-->
-<#--            </div>-->
-<#--            <div class="moviebg"></div>-->
-<#--            <div class="imgBotton">-->
-<#--                <h6 id="imgBottonMSG1">即刻观看</h6>-->
-<#--                <a href="${request.contextPath}/welcome/login"><div class="register" id="imgBottonMSG2">立刻加入</div></a>-->
-<#--            </div>-->
-<#--        </div>-->
-
-<#--        <!-- 图片详情下面的模块 &ndash;&gt;-->
-<#--        <div class="aboutMovie">-->
-<#--            <div class="msg">-->
-<#--                <p>资讯 ｜ </p>-->
-<#--                <p class="msgMovieName">想哭的我戴上了猫的面具</p>-->
-<#--                <span class="msgMovie">-->
-<#--                        * NO MASSAGE-->
-<#--                    </span>-->
-<#--            </div>-->
-
-<#--        </div>-->
-<#--    </section>-->
 
     <!-- 主界面模块 -->
     <section class="moviesBody" id="moviesBody">
@@ -128,11 +88,11 @@
         <!-- 主体全部影片展示  30个-->
         <div class="moviesmain">
 
-            <#list movielist! as movielist>
+            <#list movielist as movielist>
             <span>
-                    <a href="${request.contextPath}/movie/main/${movielist.movieid!}" ><div class="moviesMainImg" style=" background-size: 100%; background-image: url('https://${movielist.movieimgurl}') "></div></a>
-                    <div class="moviesMainName">${movielist.movietitle!}</div>
-                    <div id="movieid" style="display: none">${movielist.movieid!}</div>
+                    <a href="${request.contextPath}/movie/main/${movielist.movieid}" onclick="tomoviemain()"><div class="moviesMainImg" style=" background-size: 100%; background-image: url('https://${movielist.movieimgurl}') "></div></a>
+                    <div class="moviesMainName">${movielist.movietitle}</div>
+                    <div id="movieid" style="display: none">${movielist.movieid}</div>
             </span>
             </#list>
 

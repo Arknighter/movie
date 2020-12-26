@@ -1,6 +1,7 @@
 package com.yjh.movie;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yjh.movie.Mapper.MovieMapper;
@@ -33,6 +34,14 @@ public class MoiveMapperTest {
         long total = movieIPage.getTotal();
         System.out.println("总记录数："+total);
         movieIPage.getRecords().forEach(movie -> System.out.println("movie"+movie));
+    }
+
+    @Test
+    public void FindByid(){
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("movie_id","26694926");
+        List<Movie> movieList = movieMapper.selectList(queryWrapper);
+        movieList.forEach(movie -> System.out.println("move="+movie));
     }
 
 }

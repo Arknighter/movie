@@ -32,6 +32,24 @@ public class MovieServiceImpl implements MovieService{
         QueryWrapper<Movie> objectQueryWrapper = new QueryWrapper<>();
         objectQueryWrapper.eq("movie_status",status);
         IPage<Movie> movieIPage = movieMapper.selectPage(page, objectQueryWrapper);
+        movieIPage.getTotal();
         return movieIPage.getRecords();
+    }
+
+    @Override
+    public Long findAllByPageCount(Integer status, Integer nowpage) {
+        IPage<Movie> page = new Page<>(nowpage,30);
+        QueryWrapper<Movie> objectQueryWrapper = new QueryWrapper<>();
+        objectQueryWrapper.eq("movie_status",status);
+        IPage<Movie> movieIPage = movieMapper.selectPage(page, objectQueryWrapper);
+        return  movieIPage.getTotal();
+    }
+
+    @Override
+    public List<Movie> findById(String id) {
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("movie_id",id);
+        List<Movie> movieList = movieMapper.selectList(queryWrapper);
+        return movieList;
     }
 }

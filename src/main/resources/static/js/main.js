@@ -2,6 +2,7 @@
 
 // window.onload = function(){
 function Mainlogin(){
+
     if($('#username').value == null){
         let name = document.getElementById("username").innerText;
         if(name != null ){
@@ -90,17 +91,17 @@ function loginBAS(){
 
 //主界面全部影片界面 登录后--------------------------------------
 function loginMAIN(){
-    // $('#bodymain').style.display="block";
-    // $('#unloginuserBox').style.display="none";
-    // $('#loginuserBox').style.display="block";
-    // $('#bodymain').style.display="none";
-    // $('#moviesBody').style.display="block";
-    document.getElementById("bodymain").style.display="block"; //显示
-    document.getElementById("unloginuserBox").style.display="none"; //不显示
-    document.getElementById("loginuserBox").style.display="block"; //显示
-
-    document.getElementById("bodymain").style.display="none" ;//不显示
-    document.getElementById("moviesBody").style.display="block";//显示
+    $('#bodymain').css("display","block");
+    $('#unloginuserBox').css("display","none");
+    $('#loginuserBox').css("display","block");
+    $('#bodymain').css("display","none");
+    $('#moviesBody').css("display","block");
+    // document.getElementById("bodymain").style.display="block"; //显示
+    // document.getElementById("unloginuserBox").style.display="none"; //不显示
+    // document.getElementById("loginuserBox").style.display="block"; //显示
+    //
+    // document.getElementById("bodymain").style.display="none" ;//不显示
+    // document.getElementById("moviesBody").style.display="block";//显示
 }
 //主界面全部影片界面 没有登录--------------------------------------
 function unloginMAIN(){
