@@ -46,10 +46,31 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
+    public List<Movie> findAllByPages(Integer nowpage) {
+        IPage<Movie> page = new Page<>(nowpage,10);
+        IPage<Movie> movieIPage = movieMapper.selectPage(page, null);
+        return movieIPage.getRecords();
+    }
+
+
+    @Override
     public List<Movie> findById(String id) {
         QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("movie_id",id);
         List<Movie> movieList = movieMapper.selectList(queryWrapper);
         return movieList;
+    }
+
+    @Override
+    public Integer findCount() {
+
+        return movieMapper.selectCount(null);
+    }
+
+    @Override
+    public Integer findCountNOup(Integer status) {
+        QueryWrapper<Movie> objectQueryWrapper = new QueryWrapper<>();
+        objectQueryWrapper.eq("movie_status",status);
+        return movieMapper.selectCount(objectQueryWrapper);
     }
 }

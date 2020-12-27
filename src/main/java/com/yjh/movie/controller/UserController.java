@@ -149,6 +149,50 @@ public class UserController {
         return "no";
     }
 
+    //根据邮箱查询
+    @RequestMapping(value = "/findemailpro/{email}")
+    public String findbyEmailpro(@PathVariable("email") String email,Model model){
+        List<User> userList = userService.registerFindByEmail(email);
+        model.addAttribute("users",userList);
+        if(userList.size()>0){
+            return "userMain";
+        }
+        return "";
+    }
+
+
+    //根据id修改邮箱
+    @RequestMapping(value = "/updataemailbyid",method = RequestMethod.POST)
+    @ResponseBody
+    public String updateEmailbyid(String email,String id){
+        Integer integer = userService.updataEmailByid(email, id);
+        if (integer == 1){
+            return "ok";
+        }
+
+        return "no";
+    }
+
+
+    //根据id修改用户名
+    @RequestMapping(value = "/updataenamebyid",method = RequestMethod.POST)
+    @ResponseBody
+    public String updateNAMEbyid(String name,String id,String email,Model model){
+        Integer integer = userService.updataNAMEByid(name, id);
+        List<User> users = userService.registerFindByEmail(email);
+        for (User user: users) {
+            String uname = user.getUname()+"(前台重新登录后名字生效)";
+            user.setUname(uname);
+        }
+        model.addAttribute("users",users);
+        if (integer == 1){
+            return "ok";
+        }
+        return "no";
+    }
+
+
+
     //用于验证
     String codenumber;
     //发送验证码

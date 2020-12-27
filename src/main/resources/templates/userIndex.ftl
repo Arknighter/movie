@@ -13,16 +13,16 @@
 <script src="${request.contextPath}/js/main.js"></script>
 <body onload="Mainlogin()" >
 
-<div class="TIME">
-    <div class="notlogin" onclick="notlogin()" id="notlogin">notlogin</div>
-    <div class="loginBAS" onclick="loginBAS()" id="loginBAS">loginBAS</div>
-    <div class="loginMAIN" onclick="unloginMAIN()">unloginMAIN</div>
-    <div class="loginMAIN" onclick="loginMAIN()" id="loginMAIN">loginMAIN</div>
-</div>
+<#--<div class="TIME">-->
+<#--    <div class="notlogin" onclick="notlogin()" id="notlogin">notlogin</div>-->
+<#--    <div class="loginBAS" onclick="loginBAS()" id="loginBAS">loginBAS</div>-->
+<#--    <div class="loginMAIN" onclick="unloginMAIN()">unloginMAIN</div>-->
+<#--    <div class="loginMAIN" onclick="loginMAIN()" id="loginMAIN">loginMAIN</div>-->
+<#--</div>-->
 <div class="Main"  >
     <!-- 顶部模块 -->
     <section class="top">
-        <a href=""><div class="logo"></div></a>
+        <a href="${request.contextPath}/movie/findallbypage/1"><div class="logo"></div></a>
         <div class="seach"></div>
         <div class="unloginuserBox" id="unloginuserBox">
             <div class="unloginuser">不限时效的节目和电影</div>
@@ -32,13 +32,15 @@
 
         <div class="loginuserBox" id="loginuserBox">
             <#list users! as users>
-                <div id="usersid" style="display: none">${users.uid!}</div>
+                <div id="usersid" style="display: none">${users.uid!c!}</div>
             <div class="username" id="username">欢迎你,${users.uname!}</div>
-            </#list>
+
             <div class="loginuser"  onclick="userConter()" onclick="ConterDie()"></div>
         </div>
         <div class="userConter" id="userConter" onMouseOver="userConter()" onMouseOut="ConterDie()" >
-            <a href=""><div class="userSpace">个人中心</div></a>
+            <a href="${request.contextPath}/user/findemailpro/${users.uemail!}"><div class="userSpace">个人中心</div></a>
+            </#list>
+<#--            <a href="${request.contextPath}/tousermain"><div class="userSpace">个人中心</div></a>-->
             <a href="${request.contextPath}/user/logout"><div class="loginOut">切换登录</div></a>
         </div>
     </section>
@@ -61,10 +63,14 @@
                     <h6>导演：${movies.moviedirector!}</h6>
                 </div>
             </div>
-            <div class="moviebg"></div>
-            <div class="imgBotton">
+            <div class="moviebg" ></div>
+            <div class="imgBotton" id="imgBotton">
                 <h6 id="imgBottonMSG1">即刻观看</h6>
                 <a href="${request.contextPath}/welcome/login"><div class="register" id="imgBottonMSG2">立刻加入</div></a>
+            </div>
+            <div class="imgBotton2" style="display: none" id="imgBotton2">
+                <h6 id="imgBottonMSG1">立刻收藏</h6>
+                <a href="#"><div class="register" id="imgBottonMSG2">收藏</div></a>
             </div>
         </div>
 
@@ -123,8 +129,8 @@
 
     <!-- 主界面模块 -->
     <section class="moviesBody" id="moviesBody">
-        <!-- 轮播图 -->
-        <div class="autoimg"></div>
+<#--        <!-- 轮播图 &ndash;&gt;-->
+<#--        <div class="autoimg"></div>-->
         <!-- 主体全部影片展示  30个-->
         <div class="moviesmain">
 
@@ -149,7 +155,7 @@
 
 
         </div>
-        <a > <</a>
+        <a > < </a>
         <a href="${request.contextPath}/movie/findallbypage/2"> ></a>
 
     </section>

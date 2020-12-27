@@ -10,22 +10,23 @@
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <!-- Custom styles for this template-->
     <link href="${request.contextPath}/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="${request.contextPath}/css/usermain.css" rel="stylesheet">
 </head>
-
+<script src="/webjars/jquery/jquery.min.js "></script>
+<script src="${request.contextPath}/js/usermain.js"></script>
 
 <!-- Page Wrapper -->
-<div id="wrapper">
+<div id="wrapper" >
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${request.contextPath}/movie/findallbypage/1" >
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <a href="${request.contextPath}/movie/findall"><div class="sidebar-brand-text mx-3">网址首页<sup>back</sup></div></a>
+            <div class="sidebar-brand-text mx-3" >网址首页</div>
         </a>
 
         <!-- Divider -->
@@ -125,12 +126,56 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
+            <#--               中间主内容开始-->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">个人中心</h1>
                 </div>
+               <div class="mymessage">
+                   <#list users! as users>
+                       <h5>基本信息</h5>
+                       <div class="mymessageID">用户id： ${users.uid?c! }</div>
+                       <div class="mymessageNAME">用户名称：${users.uname!}</div>
+                       <div class="mymessageEMAIL">用户邮箱：${users.uemail!}</div>
+                       <div class="mymessagePHONE">用户绑定手机号：${users.uphonenumber!}</div>
+                       <#if users.ustatus== 0 >
+                           <div class="mymessageSTATUS">用户状态： 正常</div>
+                       <#else>
+                           <div class="mymessageSTATUS">用户状态： 已被注销</div>
+                       </#if>
+                   <#--                <div>入站时间： ${users.uregistertime!}</div>-->
+                       <div class="ID" id="mymessageID" style="display: none">${users.uid?c! }</div>
+                       <div class="ID" id="mymessageEMAIL" style="display: none">${users.uemail!}</div>
+                   </#list>
+
+                   <button onclick="userupdata()">修改邮箱</button>
+                   <button onclick="nameupdata()">修改昵称</button>
+               </div>
+                <#--               <form  action="${request.contextPath}/user/login" method="post"> &lt;#&ndash; 不用ajax&ndash;&gt;-->
+                <form onsubmit="return false" action="##" id="userupdata">
+                    <h2>修改信息</h2>
+                    <input type="email" name="uname"  id ="uname" placeholder="邮箱" onblur="updataEmail()">
+
+                    <br/><br/>
+                     <button type="button"  id="surebutton" onclick="sureupdata()" style="margin-left: 20%;">确认修改</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <button onclick="noupdata()">取消</button>
+                </form>
+                <form onsubmit="return false" action="##" id="nameupdata">
+                    <h2>修改信息</h2>
+                    <input type="email" name="uname"  id ="name" placeholder="昵称" onblur="updataName()">
+
+                    <br/><br/>
+                    <button type="button"  id="surebutton" onclick="namesure()" style="margin-left: 20%;">确认修改</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <button onclick="noupdata2()" >取消</button>
+                </form>
+
+
 
                 <#--               中间主内容-->
                 <div class="row">
@@ -200,7 +245,7 @@
 <!-- Custom scripts for all pages-->
 <script src="${request.contextPath}/js/sb-admin-2.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script src="/webjars/jquery/jquery.min.js "></script>
+
 
 
 </body>

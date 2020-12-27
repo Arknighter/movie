@@ -52,8 +52,8 @@ public class MovieController {
 
         List<Movie> movieList = movieService.findById(id);
         for (Movie movie: movieList) {
-            if(movie.getMoviestory().length()>25){
-                String story = movie.getMoviestory().substring(0,65)+"....";
+            if(movie.getMoviestory().length()>50){
+                String story = movie.getMoviestory().substring(0,60)+"....";
                 movie.setMoviestory(story);
             }
 
@@ -62,5 +62,39 @@ public class MovieController {
         return "userIndex";
     }
 
+    @RequestMapping("/movieCount")
+    public String findCount(Model model){
+        Integer count = movieService.findCount();
+        Integer noupnum = movieService.findCountNOup(1);
+        model.addAttribute("count",count);
+        model.addAttribute("noupnum",noupnum);
+        return "adminMain";
+    }
+
+    //去影片库
+    @RequestMapping("/toMAINmoive/page/{nopage}")
+    public String toMAINmoive(@PathVariable("nopage") Integer nopage,Model model){
+        //nopage=1;
+        List<Movie> movieList = movieService.findAllByPages(nopage);
+        Integer count = movieService.findCount();//总数
+        int Pagenums = count/10+1;
+        model.addAttribute("nowpage",nopage);
+        model.addAttribute("Pagenums",Pagenums);
+        model.addAttribute("count",count);
+        model.addAttribute("movieList",movieList);
+        return "adminMainMovies";
+    }
+
+    @RequestMapping("/toADDmoive")
+    public String toADDmoive(){
+
+        return "adminMainaddMovies";
+    }
+
+    @RequestMapping("/toMAINUser")
+    public String toMAINUser(){
+
+        return "adminMainusers";
+    }
 
 }

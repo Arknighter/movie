@@ -19,10 +19,16 @@ public interface UserService {
     //根据手机号查询
     public List<User> registerFindByPhone(String uphonenumber);
 
-    //估计邮箱查询
+    //根据邮箱查询
     public List<User> registerFindByEmail(String ueamil);
 
     //根据手机号修改 密码
     public Integer updataUserByPhone(String uphonenumber,String upassword);
+
+    //根据id修改邮箱
+    public Integer updataEmailByid(String ueamil,String uid);
+
+    //根据id修改name
+    public Integer updataNAMEByid(String name,String uid);
 
 }

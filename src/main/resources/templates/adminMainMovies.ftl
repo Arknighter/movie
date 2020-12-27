@@ -53,13 +53,14 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="${request.contextPath}/movie/toMAINUser">用户管理</a>
                     <a class="collapse-item" href="${request.contextPath}/movie/toADDmoive">添加影片信息</a>
+
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="${request.contextPath}/movie/toMAINmoive/page/1">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>影片库</span></a>
         </li>
@@ -145,79 +146,69 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">主界面</h1>
+                    <h1 class="h3 mb-0 text-gray-800">影片库</h1>
                     <!-- <i class="fas fa-download fa-sm text-white-50"></i> -->
                     <p  id="Times" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> 时间模块</p>
                 </div>
 
                 <!-- Content Row -->
                 <section id="main">
-                    <div class="row">
+                    <table class="table">
+                    <tr>
+                        <td>id</td>
+                        <td>名称</td>
+                        <td>上映时间</td>
+                        <td>状态</td>
+                        <td>详情</td>
+                        <td>下架</td>
 
-                        <!-- 总影片 -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">总影片数</div>
+                    </tr>
+                        <#list movieList as movielist>
+                    <tr>
+                        <td>${movielist.movieid}</td>
+                        <td>${movielist.movietitle}</td>
+                        <td>${movielist.movieuptime}</td>
+                        <#if movielist.moviestatus==0>
+                            <td>上映</td>
+                        <#else >
+                            <td>下架</td>
+                        </#if>
+                        <td><a href="${request.contextPath}/movie/main/${movielist.movieid!}" target="_blank">详情</a></td>
+                        <#if movielist.moviestatus==1>
+                            <td>已下架</td>
+                            <#else ><td><a href="#" style="text-underline-style: none">X</a></td>
+                        </#if>
 
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${count}</div>
 
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </tr>
+                        </#list>
+
+                    </table>
+                    <div style="width: 100%;height: 40px;background-color: #1c606a ;color: white; text-align: center;line-height: 40px;">
+                        总数：${count}
+                        当前页数：${nowpage}
+                        总页数：${Pagenums}
+
+                        <div style="float:right;right: 0; display:inline-block;">
+                            <#if nowpage != 1>
+                                <a href="${request.contextPath}/movie/toMAINmoive/page/1"> 首页</a>
+                            </#if>
+
+                            <#if nowpage ==1>
+                                已在首页
+                            <#else >
+                                <a href="${request.contextPath}/movie/toMAINmoive/page/${nowpage-1}"> 上一页</a>
+                            </#if>
+
+                            <#if nowpage == Pagenums>
+                                已在尾页
+                            <#else >
+                                <a href="${request.contextPath}/movie/toMAINmoive/page/${nowpage+1}"> 下一页</a>
+                            </#if>
+                            <#if nowpage != Pagenums>
+                                <a href="${request.contextPath}/movie/toMAINmoive/page/${Pagenums}"> 尾页</a>
+                            </#if>
                         </div>
-
-                        <!-- 上映影片 -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">上映影片数</div>
-
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${count-noupnum}</div>
-
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 下架影片-->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">下架影片数</div>
-
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${noupnum}</div>
-
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--可视化-->
-                        <div id="echarts" style="width: 800px;height:600px;margin: auto;">
-
-
-                        </div>
-
-
                     </div>
                 </section>
 
@@ -283,47 +274,6 @@
     <script src="${request.contextPath}/js/echarts.min.js"></script>
 
 <script>
-
-    var myChart = echarts.init(document.getElementById('echarts'));
-
-    var option = {
-        title: {
-            text: '影片可视化',
-            subtext: 'today',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left',
-            data: [ '上映', '下架' ,'总影片' ]
-        },
-        series: [
-            {
-                name: '影片可视化',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                data: [
-                    {value: ${count}, name: '总影片'},
-                    {value: ${count-noupnum}, name: '上映'},
-                    {value: ${noupnum}, name: '下架'}
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
-
-    myChart.setOption(option);
 
     // 递归刷新系统时间
     getCode();

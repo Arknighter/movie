@@ -85,5 +85,25 @@ public class UserServiceImpl implements UserService{
         return  userMapper.update(user,userQueryWrapper);
     }
 
+    @Override
+    public Integer updataEmailByid(String ueamil, String uid) {
+        User user = new User();
+        user.setUemail(ueamil);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid",uid);
+
+        return userMapper.update(user,queryWrapper);
+    }
+
+    @Override
+    public Integer updataNAMEByid(String name, String uid) {
+        User user = new User();
+        user.setUname(name);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid",uid);
+
+        return userMapper.update(user,queryWrapper);
+    }
+
 
 }

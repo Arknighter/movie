@@ -203,6 +203,36 @@
   margin-right: 7%;
   background-image: -webkit-gradient(linear, left top, right top, color-stop(5%, #333), color-stop(95%, #181818));
 }
+.Main .bodymain .movieimg .imgBotton2{
+  position: absolute;
+  bottom: -1.325rem;
+  width: 86%;
+  height: 0.7rem;
+  margin-left: 7%;
+  margin-right: 7%;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(5%, #333), color-stop(95%, #181818));
+}
+.Main .bodymain .movieimg .imgBotton2 h6 {
+  display: inline-block;
+  text-align: left;
+  margin-left: 2%;
+  line-height: 0.7rem;
+  font-size: 0.3rem;
+  color: white;
+}
+.Main .bodymain .movieimg .imgBotton2 .register {
+  position: absolute;
+  height: 0.45rem;
+  width: 1.25rem;
+  right: 5%;
+  top: 0;
+  margin-top: 0.6%;
+  text-align: center;
+  line-height: 0.45rem;
+  color: white;
+  background-color: #e50914;
+}
+
 .Main .bodymain .movieimg .imgBotton h6 {
   display: inline-block;
   text-align: left;
