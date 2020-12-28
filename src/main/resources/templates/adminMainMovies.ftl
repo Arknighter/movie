@@ -60,7 +60,7 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="${request.contextPath}/movie/toMAINmoive/page/1">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>影片库</span></a>
         </li>
@@ -161,7 +161,7 @@
                         <td>状态</td>
                         <td>详情</td>
                         <td>下架</td>
-
+                        <td>上架</td>
                     </tr>
                         <#list movieList as movielist>
                     <tr>
@@ -176,8 +176,13 @@
                         <td><a href="${request.contextPath}/movie/main/${movielist.movieid!}" target="_blank">详情</a></td>
                         <#if movielist.moviestatus==1>
                             <td>已下架</td>
-                            <#else ><td><a href="#" style="text-underline-style: none">X</a></td>
+                            <#else ><td><a href="${request.contextPath}/movie/delete/id/${movielist.movieid!}" style="text-underline-style: none">X</a></td>
                         </#if>
+                        <#if movielist.moviestatus==0>
+                            <td>已上架</td>
+                        <#else ><td><a href="${request.contextPath}/movie/upmovie/id/${movielist.movieid!}" style="text-underline-style: none">设为上架</a></td>
+                        </#if>
+
 
 
                     </tr>

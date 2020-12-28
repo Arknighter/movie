@@ -28,4 +28,7 @@ public interface MovieService {
     //查询下架影片
     public Integer findCountNOup(Integer status);
 
+    //根据id下架影片
+    public  int deleteMoviebyID(String id,Integer status);
+
 }

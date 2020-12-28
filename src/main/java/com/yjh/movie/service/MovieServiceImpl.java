@@ -73,4 +73,12 @@ public class MovieServiceImpl implements MovieService{
         objectQueryWrapper.eq("movie_status",status);
         return movieMapper.selectCount(objectQueryWrapper);
     }
+
+    @Override
+    public int deleteMoviebyID(String id,Integer Status) {
+        Movie movie = new Movie();
+        movie.setMovieid(id);
+        movie.setMoviestatus(Status);
+       return movieMapper.updateById(movie);
+    }
 }

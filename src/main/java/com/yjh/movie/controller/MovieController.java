@@ -43,6 +43,8 @@ public class MovieController {
         int pageCounts = Math.toIntExact(pageCount);
         int num = pageCounts/30+1;
         model.addAttribute("movielist",movieList);
+        model.addAttribute("nowpage",nowpage);
+        model.addAttribute("num",num);
         System.out.println("总页数："+num +"当前页数："+nowpage);
         return "userIndex";
     }
@@ -84,6 +86,26 @@ public class MovieController {
         model.addAttribute("movieList",movieList);
         return "adminMainMovies";
     }
+
+
+    //删除影片  stauts变1
+    @RequestMapping("/delete/id/{id}")
+    public  String deteleBYId(@PathVariable("id") String id){
+
+        int i = movieService.deleteMoviebyID(id, 1);
+
+        return "/movie/toMAINmoive/page/1";
+    }
+
+    //上架影片  stauts变0
+    @RequestMapping("/upmovie/id/{id}")
+    public  String upmovieBYId(@PathVariable("id") String id){
+
+        int i = movieService.deleteMoviebyID(id, 0);
+
+        return "/movie/toMAINmoive/page/1";
+    }
+
 
     @RequestMapping("/toADDmoive")
     public String toADDmoive(){

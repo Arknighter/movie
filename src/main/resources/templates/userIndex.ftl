@@ -155,8 +155,22 @@
 
 
         </div>
-        <a > < </a>
-        <a href="${request.contextPath}/movie/findallbypage/2"> ></a>
+        <div style="position:relative;bottom: 30%;" id="pagediv">
+            <#if nowpage?? >
+                <#if nowpage! == 1>
+                    <a  id="leftpage" href="#" style="float: left;color: white;font-size: 80px;text-decoration: none;" > < </a>
+                    <#else >
+                        <a id="leftpage" href="${request.contextPath}/movie/findallbypage/${nowpage-1}" style="float: left;color: white;font-size: 80px;text-decoration: none; " > < </a>
+                </#if>
+                <#if nowpage! == num>
+                    <a href="#" id="rightpage" style="float: right; color: white;font-size: 80px;text-decoration: none;"> ></a>
+                <#else >
+                    <a href="${request.contextPath}/movie/findallbypage/${nowpage+1}" id="rightpage" style="float: right; color: white;font-size: 80px;text-decoration: none;"> ></a>
+                </#if>
+            </#if>
+<#--            <a href="${request.contextPath}/movie/findallbypage/1" style="float: left;color: white;font-size: 60px;text-decoration: none;"> < </a>-->
+<#--            <a href="${request.contextPath}/movie/findallbypage/2" style="float: right; color: white;font-size: 60px;text-decoration: none;"> ></a>-->
+        </div>
 
     </section>
 
@@ -168,7 +182,6 @@
 
 <script>
     // document.getElementById('moviename').innerHTML=('<h6>电影</h6>  狼的孩子雨和雪');
-
 
 </script>
 </body>
