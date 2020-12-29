@@ -5,9 +5,7 @@ import com.yjh.movie.po.Movie;
 import com.yjh.movie.service.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -88,6 +86,23 @@ public class MovieController {
     }
 
 
+
+    //根据id找到影片 显示出来
+    @RequestMapping(value = "/find/{id}")
+    public String upfindMovieById(@PathVariable("id") String id,Model model){
+
+        List<Movie> movies = movieService.findById(id);
+        System.out.println("================="+movies);
+       if (movies.size()>0){
+           model.addAttribute("upmoviemsg",movies);
+           return "/movie/toUPmoive";
+       }else{
+           return "/movie/toMAINmoive/page/1";
+       }
+
+    }
+
+
     //删除影片  stauts变1
     @RequestMapping("/delete/id/{id}")
     public  String deteleBYId(@PathVariable("id") String id){
@@ -117,6 +132,12 @@ public class MovieController {
     public String toMAINUser(){
 
         return "adminMainusers";
+    }
+
+    @RequestMapping("/toUPmoive")
+    public String toUPmoive(){
+
+        return "adminMainMoviesupdate";
     }
 
 }

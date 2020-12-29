@@ -15,7 +15,43 @@
 </head>
 
 <body id="page-top">
+        <div class="updateformdiv" id="updateformdiv" >
+                <div class="updateForm" id="updateForm">
+<#--                <#if upmoviemsg??>-->
+                    <#list upmoviemsg as upmoviemsg>
+                    <form>
 
+                        <h3 style="margin: 0 auto;">影片id： ${upmoviemsg.movieid}</h3> </br>
+                        影片名称: <input type="text" placeholder="${upmoviemsg.movietitle!}"></br>
+                        影片图片路径: <input type="text" placeholder="${upmoviemsg.movieimgurl!}"></br>
+
+                        简介：<textarea class="formtextarea" >${upmoviemsg.moviestory!} </textarea>
+                        日期：<input type="text" placeholder="${upmoviemsg.movieuptime!}" ></br>
+<#--                        日期：<input type="text" size="4">年<input type="text" size="2" >月<input type="text" size="2">日</br>-->
+                        导演：<input type="text"  placeholder="${upmoviemsg.moviedirector!}" ></br>
+                        <button  class="formbutton" >确认修改</button>
+                        <a href="${request.contextPath}/movie/toMAINmoive/page/1"><button type="button" style="float: right; margin-right: 5%;" class="formbutton"  >取消</button></a>
+
+                    </form>
+                        </#list>
+<#--                    <#else >-->
+<#--                        <form>-->
+
+<#--                            影片id： null </br>-->
+<#--                            影片名称: <input type="text" placeholder="null"></br>-->
+<#--                            影片图片路径: <input type="text" placeholder="null"></br>-->
+
+<#--                            简介：<textarea class="formtextarea" placeholder="null"> </textarea>-->
+<#--                            日期：<input type="text" placeholder="null" ></br>-->
+<#--                            &lt;#&ndash;                        日期：<input type="text" size="4">年<input type="text" size="2" >月<input type="text" size="2">日</br>&ndash;&gt;-->
+<#--                            导演：<input type="text"  placeholder="null" ></br>-->
+<#--                            <button  class="formbutton" >确认修改</button>-->
+<#--                            <button  class="formbutton" onclick="outfrom()" >取消</button>-->
+
+<#--                        </form>-->
+<#--                </#if>-->
+                </div>
+        </div>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -152,75 +188,7 @@
                 </div>
 
                 <!-- Content Row -->
-                <section id="main">
 
-
-
-                    <table class="table">
-                    <tr>
-                        <td>编辑</td>
-                        <td>id</td>
-                        <td>名称</td>
-                        <td>上映时间</td>
-                        <td>状态</td>
-                        <td>详情</td>
-                        <td>下架</td>
-                        <td>上架</td>
-                    </tr>
-                        <#list movieList as movielist>
-                    <tr>
-                        <td ><a href="${request.contextPath}/movie/find/${movielist.movieid}" >编辑</a></td>
-                        <td id="tdmovieid">${movielist.movieid}</td>
-                        <td>${movielist.movietitle}</td>
-                        <td>${movielist.movieuptime}</td>
-                        <#if movielist.moviestatus==0>
-                            <td>上映</td>
-                        <#else >
-                            <td>下架</td>
-                        </#if>
-                        <td><a href="${request.contextPath}/movie/main/${movielist.movieid!}" target="_blank">详情</a></td>
-                        <#if movielist.moviestatus==1>
-                            <td>已下架</td>
-                            <#else ><td><a href="${request.contextPath}/movie/delete/id/${movielist.movieid!}" style="text-underline-style: none">X</a></td>
-                        </#if>
-                        <#if movielist.moviestatus==0>
-                            <td>已上架</td>
-                        <#else ><td><a href="${request.contextPath}/movie/upmovie/id/${movielist.movieid!}" style="text-underline-style: none">设为上架</a></td>
-                        </#if>
-
-
-
-                    </tr>
-                        </#list>
-
-                    </table>
-                    <div style="width: 100%;height: 40px;background-color: #1c606a ;color: white; text-align: center;line-height: 40px;">
-                        总数：${count}
-                        当前页数：${nowpage}
-                        总页数：${Pagenums}
-
-                        <div style="float:right;right: 0; display:inline-block;">
-                            <#if nowpage != 1>
-                                <a href="${request.contextPath}/movie/toMAINmoive/page/1"> 首页</a>
-                            </#if>
-
-                            <#if nowpage ==1>
-                                已在首页
-                            <#else >
-                                <a href="${request.contextPath}/movie/toMAINmoive/page/${nowpage-1}"> 上一页</a>
-                            </#if>
-
-                            <#if nowpage == Pagenums>
-                                已在尾页
-                            <#else >
-                                <a href="${request.contextPath}/movie/toMAINmoive/page/${nowpage+1}"> 下一页</a>
-                            </#if>
-                            <#if nowpage != Pagenums>
-                                <a href="${request.contextPath}/movie/toMAINmoive/page/${Pagenums}"> 尾页</a>
-                            </#if>
-                        </div>
-                    </div>
-                </section>
 
             <!-- /.container-fluid -->
 

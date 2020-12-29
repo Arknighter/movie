@@ -1,0 +1,77 @@
+.updateformdiv{
+    display: block;
+    width: 1920px;
+    height: 1080px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+
+}
+.updateformdiv .updateForm{
+    font-size: 20px;
+    width: 1200px;
+    height: 800px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: whitesmoke;
+    border: #6e7973 2px solid;
+
+}
+.formtextarea{
+    display: block;/*变为块元素*/
+    width: 50%;/*设置宽度*/
+    height: 200px;
+    margin: 0 auto;/*位置居中*/
+    outline: 0;/*点击时去除边框*/
+    border: none;/*去除外边框*/
+    background-color: #fff;/*设置背景色*/
+    padding: 10px 10px;/*设置输入内容的上下边距*/
+    border-radius: 4px;/*设置圆角*/
+    box-shadow: inset 1px 1px 6px 0 rgba(0,0,0,.3);/*设置内部阴影*/
+}
+.updateformdiv .updateForm form input{
+
+    display: block;/*变为块元素*/
+    width: 50%;/*设置宽度*/
+    margin: 0 auto;/*位置居中*/
+    outline: 0;/*点击时去除边框*/
+    border: none;/*去除外边框*/
+    background-color: #fff;/*设置背景色*/
+    padding: 10px 10px;/*设置输入内容的上下边距*/
+    border-radius: 4px;/*设置圆角*/
+    box-shadow: inset 1px 1px 6px 0 rgba(0,0,0,.3);/*设置内部阴影*/
+}
+.updateformdiv .updateForm form input:hover{
+
+    background: #ffe;/*鼠标滑过时背景颜色改变*/
+    box-shadow: inset 1px 1px 6px 0 rgba(0,0,0,.9);/*鼠标划过时边框发生改变*/
+}
+
+
+.formbutton{
+    width: 160px;
+    height: 37px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    text-align: center;
+    line-height: 37px;
+    bottom: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: floralwhite;
+}
+.formbutton:hover{
+    background-color: #fd6a80;
+}
