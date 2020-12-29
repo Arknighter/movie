@@ -2,6 +2,8 @@ package com.yjh.movie.service;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yjh.movie.Mapper.UserMapper;
 import com.yjh.movie.po.User;
 import com.yjh.movie.utils.DozerUtils;
@@ -103,6 +105,33 @@ public class UserServiceImpl implements UserService{
         queryWrapper.eq("uid",uid);
 
         return userMapper.update(user,queryWrapper);
+    }
+
+    @Override
+    public List<User> findUserall() {
+
+        return userMapper.selectList(null);
+    }
+
+    @Override
+    public List<User> findUserallbypage(Integer nowpage) {
+        IPage<User> page = new Page<>(nowpage,5);
+        IPage<User> userIPage = userMapper.selectPage(page, null);
+        return userIPage.getRecords();
+    }
+
+    @Override
+    public Integer userpageCount() {
+        return userMapper.selectCount(null);
+    }
+
+    @Override
+    public int upuserstatus(int id ,int status) {
+        User user = new User();
+        user.setUid(id);
+        user.setUstatus(status);
+
+        return userMapper.updateById(user);
     }
 
 

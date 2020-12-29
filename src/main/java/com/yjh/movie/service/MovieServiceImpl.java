@@ -81,4 +81,16 @@ public class MovieServiceImpl implements MovieService{
         movie.setMoviestatus(Status);
        return movieMapper.updateById(movie);
     }
+
+    @Override
+    public int updatamovie(String id,String story,String url,String title,String uptime,String director) {
+        Movie movie = new Movie();
+        movie.setMovieid(id);
+        movie.setMoviestory(story);
+        movie.setMovieimgurl(url);
+        movie.setMovietitle(title);
+        movie.setMovieuptime(uptime);
+        movie.setMoviedirector(director);
+        return movieMapper.updateById(movie);
+    }
 }

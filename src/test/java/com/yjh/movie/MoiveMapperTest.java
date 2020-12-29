@@ -44,4 +44,5 @@ public class MoiveMapperTest {
         movieList.forEach(movie -> System.out.println("move="+movie));
     }
 
+
 }

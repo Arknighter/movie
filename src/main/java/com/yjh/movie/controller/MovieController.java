@@ -102,6 +102,18 @@ public class MovieController {
 
     }
 
+    // 根据id 更新movie
+    @RequestMapping("/update")
+    @ResponseBody
+    public String updetaMovie(String id,String story,String url,String title,String uptime,String director){
+
+        int i = movieService.updatamovie(id, story, url, title, uptime, director);
+
+        if (i == 1){
+            return "ok";
+        }
+        return "no";
+    }
 
     //删除影片  stauts变1
     @RequestMapping("/delete/id/{id}")
@@ -131,7 +143,7 @@ public class MovieController {
     @RequestMapping("/toMAINUser")
     public String toMAINUser(){
 
-        return "adminMainusers";
+        return "/user/findall/page/1";
     }
 
     @RequestMapping("/toUPmoive")

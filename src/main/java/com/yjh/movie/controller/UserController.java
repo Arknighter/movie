@@ -1,5 +1,6 @@
 package com.yjh.movie.controller;
 
+import com.yjh.movie.po.Movie;
 import com.yjh.movie.po.User;
 import com.yjh.movie.service.UserService;
 import com.yjh.movie.utils.ReturnCode;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -237,6 +239,26 @@ public class UserController {
     return "no";
 
     }
+
+    @RequestMapping("/findall/page/{nowpage}")
+    public String findall(Model model,@PathVariable("nowpage") Integer nowpage){
+        //List<User> userall = userService.findUserall();
+        List<User> userall = userService.findUserallbypage(nowpage);
+        int counts = userService.userpageCount();
+        int allpage = counts/5+1;
+        model.addAttribute("userall",userall);
+        model.addAttribute("nowpage",nowpage);
+        model.addAttribute("counts",counts);
+        model.addAttribute("allpage",allpage);
+        return "adminMainusers";
+    }
+
+    @RequestMapping("/setStatu/{id}/{status}")
+    public String setStatu(@PathVariable("id") int id,@PathVariable("status") int status){
+        userService.upuserstatus(id,status);
+        return "/user/findall/page/1";
+    }
+
 
 
 }

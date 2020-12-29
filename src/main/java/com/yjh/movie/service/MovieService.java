@@ -31,4 +31,7 @@ public interface MovieService {
     //根据id下架影片
     public  int deleteMoviebyID(String id,Integer status);
 
+    //根据更新信息
+    public int updatamovie(String id,String story,String url,String title,String uptime,String director);
+
 }

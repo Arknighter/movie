@@ -31,4 +31,21 @@ public interface UserService {
     //根据id修改name
     public Integer updataNAMEByid(String name,String uid);
 
+    //全查
+
+    public List<User> findUserall();
+
+    //全查
+
+    public List<User> findUserallbypage(Integer nowpage );
+
+    //查总数
+
+    public Integer userpageCount();
+
+    // 更新status
+
+    public int upuserstatus(int id ,int status);
+
+
 }

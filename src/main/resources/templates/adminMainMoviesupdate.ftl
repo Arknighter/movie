@@ -22,14 +22,14 @@
                     <form>
 
                         <h3 style="margin: 0 auto;">影片id： ${upmoviemsg.movieid}</h3> </br>
-                        影片名称: <input type="text" placeholder="${upmoviemsg.movietitle!}"></br>
-                        影片图片路径: <input type="text" placeholder="${upmoviemsg.movieimgurl!}"></br>
+                        影片名称: <input id="title" type="text"  value="${upmoviemsg.movietitle!}"></br>
+                        影片图片路径: <input id="url" type="text" value="${upmoviemsg.movieimgurl!}"></br>
 
-                        简介：<textarea class="formtextarea" >${upmoviemsg.moviestory!} </textarea>
-                        日期：<input type="text" placeholder="${upmoviemsg.movieuptime!}" ></br>
+                        简介：<textarea  id="textarea" class="formtextarea" >${upmoviemsg.moviestory!} </textarea>
+                        日期：<input type="text" id="uptime" value="${upmoviemsg.movieuptime!}" ></br>
 <#--                        日期：<input type="text" size="4">年<input type="text" size="2" >月<input type="text" size="2">日</br>-->
-                        导演：<input type="text"  placeholder="${upmoviemsg.moviedirector!}" ></br>
-                        <button  class="formbutton" >确认修改</button>
+                        导演：<input type="text" id="director" value="${upmoviemsg.moviedirector!}" ></br>
+                        <button  class="formbutton"  onclick="sureUpmovie(${upmoviemsg.movieid})">确认修改</button>
                         <a href="${request.contextPath}/movie/toMAINmoive/page/1"><button type="button" style="float: right; margin-right: 5%;" class="formbutton"  >取消</button></a>
 
                     </form>

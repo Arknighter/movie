@@ -75,3 +75,71 @@
 .formbutton:hover{
     background-color: #fd6a80;
 }
+
+#container {
+    z-index: 2;
+    position: absolute;
+    box-sizing: border-box;
+    width: 500px;
+    height: 820px;
+    margin: 0 auto;
+}
+div.search {padding: 20px 0;}
+
+form {
+    z-index: 1;
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+input, button {
+    border: none;
+    outline: none;
+}
+
+input {
+    width: 100%;
+    height: 42px;
+    padding-left: 13px;
+    padding-right:46px;
+}
+
+button {
+    height: 42px;
+    width: 42px;
+    cursor: pointer;
+    position: absolute;
+}
+
+
+/*搜索框8*/
+/* .bar8 {background: #B46381;} */
+.bar8 form {
+    height: 42px;
+}
+.bar8 input {
+    width: 0;
+    padding: 0 42px 0 15px;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    transition: .3s linear;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+.bar8 input:focus {
+    width: 300px;
+    z-index: 1;
+    border-bottom: 2px solid #F9F0DA;
+}
+.bar8 button {
+
+    z-index: 1;
+    background: #fff;
+    top: 0;
+    right: 0;
+}
+
+

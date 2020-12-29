@@ -153,9 +153,80 @@
 
                 <!-- Content Row -->
                 <section id="main">
-                        哦那户12313
+                    <table class="table">
+                    <tr>
+                        <td>用户id</td>
+                        <td>用户名</td>
+                        <td>用户邮箱</td>
+                        <td>登录手机号</td>
+                        <td>用户密码</td>
+                        <td>用户等级</td>
+                        <td>用户状态</td>
+<#--                        <td>注册时间</td>-->
+                    </tr>
+
+                        <#if  userall??>
+                            <#list userall as userall>
+                                <tr>
+                                    <td>${userall.uid?c}</td>
+                                    <td>${userall.uname}</td>
+                                    <td>${userall.uemail}</td>
+                                    <td>${userall.uphonenumber}</td>
+                                    <td>${userall.upassword}</td>
+                                    <#if userall.ulevel==0>
+                                        <td>普通用户</td>
+                                        <#else ><td style="color: green">管理员</td>
+                                    </#if>
+                                    <#if userall.ustatus==0>
+                                        <td><a href="${request.contextPath}/user/setStatu/${userall.uid?c}/1">正常</a></td>
+                                    <#else ><td ><a style="color: red" href="${request.contextPath}/user/setStatu/${userall.uid?c}/0">已停止登录</a></td>
+                                    </#if>
+<#--                                    <td>${userall.uregistertime}</td>-->
+                                </tr>
+
+                            </#list>
 
 
+                            <#else >
+                                <tr>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                </tr>
+
+                        </#if>
+
+                    </table>
+                    <div style="width: 100%;height: 40px;background-color: #1c606a ;color: white; text-align: center;line-height: 40px;">
+                        总数：${counts}
+                        当前页数：${nowpage}
+                        总页数：${allpage}
+
+                        <div style="float:right;right: 0; display:inline-block;">
+                            <#if nowpage != 1>
+                                <a href="${request.contextPath}/user/findall/page/1"> 首页</a>
+                            </#if>
+
+                            <#if nowpage ==1>
+                                已在首页
+                            <#else >
+                                <a href="${request.contextPath}/user/findall/page/${nowpage-1}"> 上一页</a>
+                            </#if>
+
+                            <#if nowpage == allpage>
+                                已在尾页
+                            <#else >
+                                <a href="${request.contextPath}/user/findall/page/${nowpage+1}"> 下一页</a>
+                            </#if>
+                            <#if nowpage != allpage>
+                                <a href="${request.contextPath}/user/findall/page/${allpage}"> 尾页</a>
+                            </#if>
+                        </div>
+                    </div>
                 </section>
 
             <!-- /.container-fluid -->
