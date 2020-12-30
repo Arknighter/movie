@@ -78,12 +78,12 @@
 
         <!-- Main Content -->
         <div id="content">
-            <div id="container">
+            <div id="container" >
 
                 <div class="search bar8">
                     <form>
-                        <input type="text" id="seachtext" placeholder="请输入您要搜索的内容...">
-                        <button type="submit" >🔍</button>
+                        <input type="text" id="Movieseachtext" placeholder="请输入您要搜索的内容...">
+                        <button type="button" onclick="movieseach()">🔍</button>
                     </form>
                 </div>
             </div>
@@ -160,11 +160,11 @@
                 </div>
 
                 <!-- Content Row -->
-                <section id="main">
+                <section id="main" >
 
 
 
-                    <table class="table">
+                    <table class="table" >
                     <tr>
                         <td>编辑</td>
                         <td>id</td>
@@ -175,7 +175,7 @@
                         <td>下架</td>
                         <td>上架</td>
                     </tr>
-                        <#list movieList as movielist>
+                        <#list movieList?sort_by("movieuptime")?reverse as movielist>
                     <tr>
                         <td ><a href="${request.contextPath}/movie/find/${movielist.movieid}" >编辑</a></td>
                         <td id="tdmovieid">${movielist.movieid}</td>
@@ -293,6 +293,8 @@
 
 <script>
 
+
+    
     // 递归刷新系统时间
     getCode();
     function getCode(){

@@ -32,6 +32,7 @@ public class MovieServiceImpl implements MovieService{
         IPage<Movie> page = new Page<>(nowpage,30);
         QueryWrapper<Movie> objectQueryWrapper = new QueryWrapper<>();
         objectQueryWrapper.eq("movie_status",status);
+        objectQueryWrapper.orderByAsc("movie_grade");
         IPage<Movie> movieIPage = movieMapper.selectPage(page, objectQueryWrapper);
         movieIPage.getTotal();
         return movieIPage.getRecords();
@@ -48,8 +49,14 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public List<Movie> findAllByPages(Integer nowpage) {
+//        IPage<Movie> page = new Page<>(nowpage,10);
+//        IPage<Movie> movieIPage = movieMapper.selectPage(page, null);
+//        return movieIPage.getRecords();
+
         IPage<Movie> page = new Page<>(nowpage,10);
-        IPage<Movie> movieIPage = movieMapper.selectPage(page, null);
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("movie_grade");
+        IPage<Movie> movieIPage = movieMapper.selectPage(page, queryWrapper);
         return movieIPage.getRecords();
     }
 
@@ -111,5 +118,10 @@ public class MovieServiceImpl implements MovieService{
         queryWrapper.like(name != null,"movie_title",name);
         IPage<Movie> movieIPage = movieMapper.selectPage(page,queryWrapper);
         return movieIPage.getTotal();
+    }
+
+    @Override
+    public int addMovie(Movie movie) {
+        return movieMapper.insert(movie);
     }
 }

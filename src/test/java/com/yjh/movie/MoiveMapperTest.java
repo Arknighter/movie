@@ -21,6 +21,12 @@ public class MoiveMapperTest {
 
 
     @Test
+    public  void tt(){
+        String newid = String.valueOf(((Math.random()*999999999)+100000000));
+        System.out.println(newid);
+    }
+
+    @Test
     public void FindAll(){
         List<Movie> movies = movieMapper.selectList(null);
         movies.forEach(movie -> System.out.println("movie"+movie));
@@ -44,5 +50,24 @@ public class MoiveMapperTest {
         movieList.forEach(movie -> System.out.println("move="+movie));
     }
 
+
+    @Test
+    public void insertMovie(){
+
+        Movie movie = new Movie().builder()
+                .movieaction("主演1")
+                .movieid("1111112")//
+                .moviegrade("7.2")//
+                .moviedirector("导演1")
+                .movieimgurl("xxxxx.jpg")
+                .movietime("146分钟")
+                .movietitle("我的测试aa")
+                .movieuptime("2020-02-12(中国)")
+                .movietid("1")//
+                .moviestatus(0)//
+                .moviestory("这个测试简介")
+                .build();
+        movieMapper.insert(movie);
+    }
 
 }

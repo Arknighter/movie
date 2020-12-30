@@ -53,7 +53,7 @@ public class MovieController {
         List<Movie> movieList = movieService.findById(id);
         for (Movie movie: movieList) {
             if(movie.getMoviestory().length()>50){
-                String story = movie.getMoviestory().substring(0,60)+"....";
+                String story = movie.getMoviestory().substring(0,50)+"....";
                 movie.setMoviestory(story);
             }
 
@@ -148,6 +148,22 @@ public class MovieController {
         int i = movieService.deleteMoviebyID(id, 0);
 
         return "/movie/toMAINmoive/page/1";
+    }
+
+    @RequestMapping("/addmovies")
+    @ResponseBody
+    public String addmovies(Movie movie){
+        int newid = (int)((Math.random()*99999999)+1000000);
+        String id = String.valueOf(newid);
+        movie.setMovieid(id);
+        movie.setMoviestatus(0);
+        movie.setMoviegrade("10");
+        movie.setMovietid("1");
+        int i = movieService.addMovie(movie);
+        if (i==1){
+            return "ok";
+        }
+        return "no";
     }
 
 

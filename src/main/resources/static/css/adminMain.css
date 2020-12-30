@@ -75,19 +75,20 @@
 .formbutton:hover{
     background-color: #fd6a80;
 }
+#main{
+    z-index: 8;
+}
 
 #container {
-    z-index: 2;
     position: absolute;
     box-sizing: border-box;
     width: 500px;
-    height: 820px;
+    height: 220px;
     margin: 0 auto;
 }
 div.search {padding: 20px 0;}
 
 form {
-    z-index: 1;
     position: relative;
     width: 300px;
     margin: 0 auto;

@@ -1,5 +1,6 @@
 package com.yjh.movie.service;
 
+import com.yjh.movie.po.Movie;
 import com.yjh.movie.po.User;
 
 import java.util.List;
@@ -54,6 +55,8 @@ public interface UserService {
     //查总数 条件
 
     public Long userLikepageCount(Integer nowpage,String name);
+
+
 
 
 }

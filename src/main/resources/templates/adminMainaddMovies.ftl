@@ -151,7 +151,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="display: block;">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -161,8 +161,18 @@
                 </div>
 
                 <!-- Content Row -->
-                <section id="main">
-
+                <section id="main" >
+                         <form style="display: block;margin-right: 100%;">
+                             电影名：<input type="text" placeholder="输入电影名字" id="movietitle"/>
+                             导演：<input type="text" placeholder="人名" id="moviedirector"/>
+                             主演：<input type="text" placeholder="人名" id="movieaction"/>
+                             图片路径：<input type="text" placeholder="不需要+https://" id="movieimgurl"/>
+                             </br>
+                             总分钟：<input type="text" placeholder="xxx分钟 "  id="movietime"/>
+                             上映地区和时间：<input type="text" placeholder="xxxx-xx-xx(country)" id="movieuptime"/>
+                             简介：<textarea style="width: 600px;height: 300px;" id="moviestory"></textarea>
+                             <input type="submit" onclick="addmovie()">
+                         </form>
                 </section>
 
             <!-- /.container-fluid -->

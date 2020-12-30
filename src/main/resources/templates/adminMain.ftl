@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <!-- Custom styles for this template-->
     <link href="${request.contextPath}/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="${request.contextPath}/css/adminMain.css" rel="stylesheet">
+
 
 </head>
 
@@ -128,7 +128,7 @@
                                 可增加功能模块
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" >
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 登出
                             </a>
@@ -261,8 +261,8 @@
             </div>
             <div class="modal-body">你将会退出此界面并且回到登录界面</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                <a class="btn btn-primary" href="${request.contextPath}/user/logout">确认</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" >取消</button>
+                <a class="btn btn-primary" href="${request.contextPath}/user/logout" >确认</a>
             </div>
         </div>
     </div>

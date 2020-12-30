@@ -42,5 +42,8 @@ public interface MovieService {
 
     public Long movieLikepageCount(Integer nowpage,String name);
 
+    //    填加电影
+    public int addMovie(Movie movie);
+
 
 }

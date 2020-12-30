@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yjh.movie.Mapper.UserMapper;
+import com.yjh.movie.po.Movie;
 import com.yjh.movie.po.User;
 import com.yjh.movie.utils.DozerUtils;
 import org.apache.ibatis.annotations.Mapper;
@@ -153,6 +154,7 @@ public class UserServiceImpl implements UserService{
         IPage<User> userIPage = userMapper.selectPage(page, queryWrapper);
         return userIPage.getTotal();
     }
+
 
 
 }

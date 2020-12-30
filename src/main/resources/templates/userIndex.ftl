@@ -32,7 +32,7 @@
 
         <div class="loginuserBox" id="loginuserBox">
             <#list users! as users>
-                <div id="usersid" style="display: none">${users.uid!c!}</div>
+                <div id="usersid" name="usersid" style="display: none">${users.uid?c!}</div>
             <div class="username" id="username">欢迎你,${users.uname!}</div>
 
             <div class="loginuser"  onclick="userConter()" onclick="ConterDie()"></div>
@@ -50,7 +50,7 @@
     <section class="bodymain" id="bodymain">
         <div class="movieimg" id="movieimg" >
             <div class="bgfilter">
-
+                <div id="mname" style="display:none;">${movies.movietitle!}</div>
                 <div class="moviename" id="moviename">   <h6>电影</h6>  ${movies.movietitle!}</div>
                 <div class="movieMsg">
                     <div class="movieYear" id="movieYear">${movies.movieuptime!}</div>
@@ -70,7 +70,7 @@
             </div>
             <div class="imgBotton2" style="display: none" id="imgBotton2">
                 <h6 id="imgBottonMSG1">立刻收藏</h6>
-                <a href="#"><div class="register" id="imgBottonMSG2">收藏</div></a>
+                <div class="register" id="imgBottonMSG2" onclick="addc(${movies.movieid})">收藏</div>
             </div>
         </div>
 
@@ -182,7 +182,24 @@
 
 <script>
     // document.getElementById('moviename').innerHTML=('<h6>电影</h6>  狼的孩子雨和雪');
+    function addc(mid) {
+        let uid =$('#usersid').html();
+        let mname =$('#mname').html();
+        //console.log(uid);
+        $.ajax({
+            url:"/ucollect/addc/"+mid+"/"+uid+"/"+mname,
+            type:"POST",
+            success: function (data) {
+                if (data.toString() == "ok") {
+                        alert("收藏成功");
 
+                } else {
+                    alert("收藏失败");
+                }
+            }
+
+        })
+    }
 </script>
 </body>
 
