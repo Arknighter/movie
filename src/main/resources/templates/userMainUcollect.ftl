@@ -138,19 +138,23 @@
                     <h1 class="h3 mb-0 text-gray-800">收藏库</h1>
                 </div>
                <div class="mymessage">
+                   <#if lists?? &&(lists?size>0)>
                    <table class="table">
                        <tr>
                            <td>收藏名称</td>
                            <td>影片详情</td>
                            <td>取消收藏</td>
                        </tr>
-                    <#list lists as lists>
-                       <tr>
-                           <td>${lists.mname}</td>
-                           <td><a href="${request.contextPath}/movie/main/${lists.mid}" target="_blank">详情</a></td>
-                           <td><a href="#" onclick="delCollect(${lists.mid})">x</a></td>
-                       </tr>
-                    </#list>
+                       <#list lists as lists>
+                           <tr>
+                               <td>${lists.mname}</td>
+                               <td><a href="${request.contextPath}/movie/main/${lists.mid}" target="_blank">详情</a></td>
+                               <td><a href="#" onclick="delCollect(${lists.mid})">x</a></td>
+                           </tr>
+                       </#list>
+                       <#else >
+                        <h2>收藏你的第一个影片吧➡<a href="${request.contextPath}/movie/findallbypage/1">网址首页</a>️</h2>
+                   </#if>
                    </table>
                </div>
                 <#--               <form  action="${request.contextPath}/user/login" method="post"> &lt;#&ndash; 不用ajax&ndash;&gt;--
