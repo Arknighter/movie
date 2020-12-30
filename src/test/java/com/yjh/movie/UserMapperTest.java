@@ -119,6 +119,24 @@ public class UserMapperTest {
 
     }
 
+    //基于条件进行模糊查询
+    @Test
+    public  void finduserbyname(){
+//        boolean a = true;
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.like(a,"uname","o");
+//        List<User> users = userMapper.selectList(queryWrapper);
+//        users.forEach(user -> System.out.println("name like she hava ="+user));
+       String name = "o";
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(name!=null,"uname",name);
+        Integer integer = userMapper.selectCount(queryWrapper);
+        System.out.println(integer);
+
+
+
+    }
+
 
 
 }

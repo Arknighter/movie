@@ -2,6 +2,7 @@ package com.yjh.movie.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.yjh.movie.po.Movie;
+import com.yjh.movie.po.User;
 
 import java.util.List;
 
@@ -33,5 +34,13 @@ public interface MovieService {
 
     //根据更新信息
     public int updatamovie(String id,String story,String url,String title,String uptime,String director);
+
+    //根据影片名模糊查询影片
+    public List<Movie> findMovieLikeName(Integer nowpage, String name);
+
+    //查总数 条件
+
+    public Long movieLikepageCount(Integer nowpage,String name);
+
 
 }

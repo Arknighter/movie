@@ -22,3 +22,13 @@ function sureUpmovie(id) {
 
         })
 }
+
+
+function userSerch() {
+    //alert($('#adminUserSeachText').val());
+    //console.log("/user/likepage/"+$('#adminUserSeachText').val()+"/1");
+    if($('#adminUserSeachText').val()!=""){
+        window.location.href="/user/likepage/"+$('#adminUserSeachText').val()+"/1";
+    }
+
+}

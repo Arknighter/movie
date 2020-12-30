@@ -86,6 +86,23 @@ public class MovieController {
     }
 
 
+    //影片名字查影片库
+    @RequestMapping("/likemoive/{name}/{nopage}")
+    public String toMAINmoive(@PathVariable("nopage") Integer nopage,@PathVariable("name") String name,Model model){
+        //nopage=1;
+        List<Movie> movieList = movieService.findMovieLikeName(nopage,name);
+        Long count = movieService.movieLikepageCount(nopage, name);
+        int Pagenums = (int) (count/10+1);
+        model.addAttribute("nowpage",nopage);
+        model.addAttribute("Pagenums",Pagenums);
+        model.addAttribute("count",count);
+        model.addAttribute("movieList",movieList);
+        return "adminMainMovies";
+    }
+
+
+
+
 
     //根据id找到影片 显示出来
     @RequestMapping(value = "/find/{id}")

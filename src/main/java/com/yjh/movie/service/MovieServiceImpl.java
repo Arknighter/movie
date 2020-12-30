@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yjh.movie.Mapper.MovieMapper;
 import com.yjh.movie.po.Movie;
+import com.yjh.movie.po.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -92,5 +93,23 @@ public class MovieServiceImpl implements MovieService{
         movie.setMovieuptime(uptime);
         movie.setMoviedirector(director);
         return movieMapper.updateById(movie);
+    }
+
+    @Override
+    public List<Movie> findMovieLikeName(Integer nowpage, String name) {
+        IPage<Movie> page = new Page<>(nowpage,10);
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(name != null,"movie_title",name);
+        IPage<Movie> movieIPage = movieMapper.selectPage(page,queryWrapper);
+        return movieIPage.getRecords();
+    }
+
+    @Override
+    public Long movieLikepageCount(Integer nowpage, String name) {
+        IPage<Movie> page = new Page<>(nowpage,10);
+        QueryWrapper<Movie> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(name != null,"movie_title",name);
+        IPage<Movie> movieIPage = movieMapper.selectPage(page,queryWrapper);
+        return movieIPage.getTotal();
     }
 }

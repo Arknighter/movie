@@ -47,5 +47,13 @@ public interface UserService {
 
     public int upuserstatus(int id ,int status);
 
+    //根据名字模糊查找用户
+
+    public List<User> findUserLikeName(Integer nowpage,String name);
+
+    //查总数 条件
+
+    public Long userLikepageCount(Integer nowpage,String name);
+
 
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 
@@ -132,6 +133,25 @@ public class UserServiceImpl implements UserService{
         user.setUstatus(status);
 
         return userMapper.updateById(user);
+    }
+
+    @Override
+    public List<User> findUserLikeName(Integer nowpage,String name) {
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(name != null,"uname",name);
+        IPage<User> page = new Page<>(nowpage,5);
+        IPage<User> userIPage = userMapper.selectPage(page, queryWrapper);
+        return userIPage.getRecords();
+    }
+
+    @Override
+    public Long userLikepageCount(Integer nowpage,String name) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(name != null,"uname",name);
+        IPage<User> page = new Page<>(nowpage,5);
+        IPage<User> userIPage = userMapper.selectPage(page, queryWrapper);
+        return userIPage.getTotal();
     }
 
 

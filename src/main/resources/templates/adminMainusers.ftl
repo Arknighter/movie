@@ -78,7 +78,15 @@
 
         <!-- Main Content -->
         <div id="content">
+            <div id="container">
 
+                <div class="search bar8">
+                    <form>
+                        <input type="text" id="adminUserSeachText" placeholder="请输入您要搜索的内容...">
+                        <button type="button" onclick="userSerch()">🔍</button>
+                    </form>
+                </div>
+            </div>
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -291,7 +299,6 @@
     <script src="${request.contextPath}/js/echarts.min.js"></script>
 
 <script>
-
 
     // 递归刷新系统时间
     getCode();

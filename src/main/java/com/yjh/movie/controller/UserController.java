@@ -260,5 +260,17 @@ public class UserController {
     }
 
 
+    //模糊查询
+    @RequestMapping("/likepage/{name}/{nowpage}")
+    public  String ULikebyname(@PathVariable("nowpage") Integer nowpage,@PathVariable("name") String name,Model model){
+        List<User> userList = userService.findUserLikeName(nowpage,name);
+        long counts = userService.userLikepageCount(nowpage,name);
+        int allpage = (int) (counts/5+1);
+        model.addAttribute("userall",userList);
+        model.addAttribute("nowpage",nowpage);
+        model.addAttribute("counts",counts);
+        model.addAttribute("allpage",allpage);
+        return "adminMainusers";
+    }
 
 }
