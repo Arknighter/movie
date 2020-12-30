@@ -64,13 +64,62 @@
                 </div>
             </div>
             <div class="moviebg" ></div>
-            <div class="imgBotton" id="imgBotton">
-                <h6 id="imgBottonMSG1">即刻观看</h6>
-                <a href="${request.contextPath}/welcome/login"><div class="register" id="imgBottonMSG2">立刻加入</div></a>
+            <div class="imgBottuon" id="imgBotton" style="position: absolute;
+  bottom: -1.325rem;
+  width: 86%;
+  height: 0.7rem;
+  margin-left: 7%;
+  margin-right: 7%;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(5%, #333), color-stop(95%, #181818));">
+                    <h6 id="imgBottonMSG1" style="display: inline-block;
+  text-align: left;
+  margin-left: 2%;
+  line-height: 0.7rem;
+  font-size: 0.3rem;
+  color: white;">即刻观看</h6>
+                    <a href="${request.contextPath}/welcome/login"><div class="register" id="imgBottonMSG2" style="position: absolute;
+  height: 0.45rem;
+  width: 1.25rem;
+  right: 5%;
+  top: 0;
+  margin-top: 0.6%;
+  text-align: center;
+  line-height: 0.45rem;
+  color: white;
+  background-color: #e50914;">立刻加入</div></a>
+
             </div>
             <div class="imgBotton2" style="display: none" id="imgBotton2">
-                <h6 id="imgBottonMSG1">立刻收藏</h6>
-                <div class="register" id="imgBottonMSG2" onclick="addc(${movies.movieid})">收藏</div>
+                <#if users??>
+                    <#if collectList??&&(collectList?size>0)>
+                        <#list collectList as collectList>
+                            <#list users! as users>
+                                <#if collectList.uid?c ==users.uid?c>
+                                    <h6 id="imgBottonMSG1">立刻收藏</h6>
+                                    <div class="register" id="imgBottonMSG2" onclick="delc(${movies.movieid})">取消收藏</div>
+
+                                </#if>
+                            </#list>
+                        </#list>
+                        <#else >
+                            <h6 id="imgBottonMSG1">立刻收藏</h6>
+                            <div class="register" id="imgBottonMSG2" onclick="addc(${movies.movieid})">收藏</div>
+                    </#if>
+
+
+                </#if>
+
+
+<#--                <#if users?? >-->
+<#--                    <#list collectList as collectList>-->
+<#--                        <#if collectList.uid == Session.users.uid>-->
+<#--                            <div class="register" id="imgBottonMSG2" >已收藏</div>-->
+<#--                            <#else >-->
+<#--                                <div class="register" id="imgBottonMSG2" onclick="addc(${movies.movieid})">收藏</div>-->
+<#--                        </#if>-->
+<#--                    </#list>-->
+<#--                </#if>-->
+
             </div>
         </div>
 
@@ -192,13 +241,32 @@
             success: function (data) {
                 if (data.toString() == "ok") {
                         alert("收藏成功");
+                    window.location.href="/movie/main/"+mid;
 
                 } else {
-                    alert("收藏失败");
+                    alert("请登录");
                 }
             }
 
         })
+    }
+
+    function delc(mid) {
+        $.ajax({
+            url:"/ucollect/delc/"+mid,
+            type:"POST",
+            success: function (data) {
+                if (data.toString() == "ok") {
+                    alert("取消收藏成功");
+                    window.location.href="/movie/main/"+mid;
+
+                } else {
+                    alert("请登录");
+                }
+            }
+
+        })
+
     }
 </script>
 </body>

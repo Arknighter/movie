@@ -2,7 +2,9 @@ package com.yjh.movie.controller;
 
 
 import com.yjh.movie.po.Movie;
+import com.yjh.movie.po.UCollect;
 import com.yjh.movie.service.MovieService;
+import com.yjh.movie.service.UCollectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ public class MovieController {
 
     @Resource
     MovieService movieService;
+    @Resource
+    UCollectService uCollectService;
 
 
     @RequestMapping(value = "/findall")
@@ -51,6 +55,8 @@ public class MovieController {
     public String tomovieMain(@PathVariable("movieid") String id,Model model){
 
         List<Movie> movieList = movieService.findById(id);
+        List<UCollect> collectList = uCollectService.findUCallbyUID(id);
+        model.addAttribute("collectList",collectList);
         for (Movie movie: movieList) {
             if(movie.getMoviestory().length()>50){
                 String story = movie.getMoviestory().substring(0,50)+"....";

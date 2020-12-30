@@ -135,51 +135,25 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">个人中心</h1>
+                    <h1 class="h3 mb-0 text-gray-800">收藏库</h1>
                 </div>
                <div class="mymessage">
-                   <#list users! as users>
-                       <h5>基本信息</h5>
-                       <div class="mymessageID">用户id： ${users.uid?c! }</div>
-                       <div class="mymessageNAME">用户名称：${users.uname!}</div>
-                       <div class="mymessageEMAIL">用户邮箱：${users.uemail!}</div>
-                       <div class="mymessagePHONE">用户绑定手机号：${users.uphonenumber!}</div>
-                       <#if users.ustatus== 0 >
-                           <div class="mymessageSTATUS">用户状态： 正常</div>
-                       <#else>
-                           <div class="mymessageSTATUS">用户状态： 已被注销</div>
-                       </#if>
-                   <#--                <div>入站时间： ${users.uregistertime!}</div>-->
-                       <div class="ID" id="mymessageID" style="display: none">${users.uid?c! }</div>
-                       <div class="ID" id="mymessageEMAIL" style="display: none">${users.uemail!}</div>
-                   </#list>
-
-                   <button onclick="userupdata()">修改邮箱</button>
-                   <button onclick="nameupdata()">修改昵称</button>
+                   <table class="table">
+                       <tr>
+                           <td>收藏名称</td>
+                           <td>影片详情</td>
+                           <td>取消收藏</td>
+                       </tr>
+                    <#list lists as lists>
+                       <tr>
+                           <td>${lists.mname}</td>
+                           <td><a href="${request.contextPath}/movie/main/${lists.mid}" target="_blank">详情</a></td>
+                           <td><a href="#" onclick="delCollect(${lists.mid})">x</a></td>
+                       </tr>
+                    </#list>
+                   </table>
                </div>
-                <#--               <form  action="${request.contextPath}/user/login" method="post"> &lt;#&ndash; 不用ajax&ndash;&gt;-->
-                <form onsubmit="return false" action="##" id="userupdata">
-                    <h2>修改信息</h2>
-                    <input type="email" name="uname"  id ="uname" placeholder="邮箱" onblur="updataEmail()">
-
-                    <br/><br/>
-                     <button type="button"  id="surebutton" onclick="sureupdata()" style="margin-left: 20%;">确认修改</button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-
-                    <button onclick="noupdata()">取消</button>
-                </form>
-                <form onsubmit="return false" action="##" id="nameupdata">
-                    <h2>修改信息</h2>
-                    <input type="email" name="uname"  id ="name" placeholder="昵称" onblur="updataName()">
-
-                    <br/><br/>
-                    <button type="button"  id="surebutton" onclick="namesure()" style="margin-left: 20%;">确认修改</button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-
-                    <button onclick="noupdata2()" >取消</button>
-                </form>
-
-
+                <#--               <form  action="${request.contextPath}/user/login" method="post"> &lt;#&ndash; 不用ajax&ndash;&gt;--
 
                 <#--               中间主内容-->
                 <div class="row">
@@ -249,7 +223,23 @@
 <!-- Custom scripts for all pages-->
 <script src="${request.contextPath}/js/sb-admin-2.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    function delCollect(mid) {
+        $.ajax({
+            url:"${request.contextPath}/ucollect/delc/"+mid,
+            type:"POST",
+            success: function (data) {
+                if (data.toString() == "ok") {
+                    location.reload();
+                } else {
+                    location.reload();
+                }
+            }
 
+        })
+    }
+    
+</script>
 
 
 </body>
