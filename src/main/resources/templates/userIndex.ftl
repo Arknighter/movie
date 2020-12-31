@@ -63,7 +63,7 @@
                     <h6>导演：${movies.moviedirector!}</h6>
                 </div>
             </div>
-            <div class="moviebg" ></div>
+            <div class="moviebg" STYLE="background-image: url(https://${movies.movieimgurl});background-size: cover;"></div>
             <div class="imgBottuon" id="imgBotton" style="position: absolute;
   bottom: -1.325rem;
   width: 86%;

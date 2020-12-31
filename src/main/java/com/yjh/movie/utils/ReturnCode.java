@@ -35,8 +35,8 @@ public class ReturnCode {
         setNewcode();
         String code = Integer.toString(getNewcode());
         System.out.println("发送的验证码为："+code);
-        // 填入自己的接口
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4G4Gw2K2VhtDHJbHqNJ9", "aE2niYhdrxehH2nb3lGVDDZ9JGrWrZ");
+        // 填入自己的接口  我改了
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "xxxxxxxxxx", "xxxxx");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
