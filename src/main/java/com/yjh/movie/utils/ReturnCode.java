@@ -35,7 +35,7 @@ public class ReturnCode {
         setNewcode();
         String code = Integer.toString(getNewcode());
         System.out.println("发送的验证码为："+code);
-        // 填入自己的接口  我改了
+        // 填入自己的接口  2023年2月26日更：阿里云key已失效  看了History也无所谓
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "xxxxxxxxxx", "xxxxx");
         IAcsClient client = new DefaultAcsClient(profile);
 
